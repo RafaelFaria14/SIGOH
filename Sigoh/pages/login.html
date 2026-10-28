@@ -1,92 +1,51 @@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Acesso ao SIGOH - Sistema de Gestão Ortopédica Hospitalar"
-    >
-        <link rel="stylesheet" href="../css/main.css">
-        <link rel="stylesheet" href="../css/paginas.css/login.css">
-    >
-
+    <meta name="description" content="Login - SIGOH Sistema de Gestão Ortopédica Hospitalar">
     <title>Login | SIGOH</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
-<body class="login-page">
+<body>
 
-    <main class="login">
-
-        <section class="login__container">
-
-            <header class="login__header">
-                <h1 class="login__logo">SIGOH</h1>
-
-                <p class="login__subtitle">
-                    Sistema de Gestão Ortopédica Hospitalar
-                </p>
+    <main class="login-container">
+        <section class="card-login">
+            <header class="sigoh-header">
+                <h1 class="sigoh-titulo">SIGOH</h1>
+                <p class="sigoh-subtitulo">Sistema de Gestão Ortopédica Hospitalar</p>
             </header>
 
-            <section class="login__content">
+            <div class="login-boas-vindas">
+                <h2>Bem-vindo de volta</h2>
+                <p>Entre com suas credenciais para acessar o sistema.</p>
+            </div>
 
-                <h2 class="login__title">Bem-vindo de volta</h2>
+            <form class="login-form">
+                <div class="form-grupo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
 
-                <p class="login__description">
-                    Entre com suas credenciais para acessar o sistema.
-                </p>
+                <div class="form-grupo">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                </div>
 
-                <form class="login__form" action="#" method="get">
+                <button type="submit" class="btn-acessar">Entrar no sistema</button>
+            </form>
 
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
+            <a href="../index.html" class="btn-voltar">
+                &larr; Voltar para a página inicial
+            </a>
 
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="seuemail@exemplo.com"
-                            autocomplete="username"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Senha</label>
-
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Digite sua senha"
-                            autocomplete="current-password"
-                            required
-                        >
-                    </div>
-
-                    <button class="login__button" type="submit">
-                        Entrar no sistema
-                    </button>
-
-                </form>
-
-            </section>
-
-            <footer class="login__footer">
-                <p>
-                    SIGOH &copy; 2026
-                </p>
-
-                <p>
-                    Sistema acadêmico demonstrativo
-                </p>
+            <footer class="card-footer">
+                <p>SIGOH &copy; 2026</p>
+                <small>Sistema acadêmico demonstrativo</small>
             </footer>
-
         </section>
-
     </main>
 
 </body>
