@@ -1,0 +1,238 @@
+
+/* ========================================
+   LAYOUT PRINCIPAL
+======================================== */
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--color-background);
+}
+
+.app-layout__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   BARRA LATERAL
+======================================== */
+
+.sidebar {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    background-color: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+}
+
+.sidebar__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+    padding: 4px 8px;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.sidebar__brand-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.sidebar__brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.sidebar__brand-text strong {
+    font-size: 20px;
+}
+
+.sidebar__brand-text small {
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+/* Links do menu */
+
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-size: 14px;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.sidebar__link:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+.sidebar__link--active {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.sidebar__link--active:hover {
+    background-color: var(--color-primary-dark);
+    color: #FFFFFF;
+}
+
+.sidebar__icon {
+    width: 22px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.sidebar__footer {
+    margin-top: auto;
+    padding-top: 24px;
+}
+
+/* ========================================
+   CABEÇALHO SUPERIOR
+======================================== */
+
+.topbar {
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 32px;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.topbar__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.topbar__eyebrow {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.topbar__heading h1 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 22px;
+}
+
+.topbar__profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topbar__avatar {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+.topbar__profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.topbar__profile-info strong {
+    color: var(--color-text);
+    font-size: 13px;
+}
+
+.topbar__profile-info span {
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 760px) {
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 16px;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .sidebar__brand {
+        margin-bottom: 16px;
+    }
+
+    .sidebar__nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar__link {
+        padding: 10px;
+    }
+
+    .sidebar__footer {
+        margin-top: 12px;
+        padding-top: 0;
+    }
+
+    .topbar {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .topbar__profile-info {
+        display: none;
+    }
+
+    .sidebar__link {
+        font-size: 12px;
+        gap: 6px;
+    }
+}

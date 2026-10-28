@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Dashboard do SIGOH">
+
+    <title>Dashboard | SIGOH</title>
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
+<link rel="stylesheet" href="../css/paginas.css/dashboard.css">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="app-layout">
+
+        <!-- BARRA LATERAL -->
+        <aside class="sidebar">
+
+            <a class="sidebar__brand" href="../index.html">
+                <span class="sidebar__brand-icon">+</span>
+
+                <span class="sidebar__brand-text">
+                    <strong>SIGOH</strong>
+                    <small>Gestão Ortopédica</small>
+                </span>
+            </a>
+
+            <nav class="sidebar__nav" aria-label="Navegação principal">
+
+                <a class="sidebar__link sidebar__link--active"
+                   href="./dashboard.html"
+                   aria-current="page">
+                    <span class="sidebar__icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a class="sidebar__link" href="./pacientes.html">
+                    <span class="sidebar__icon">♙</span>
+                    <span>Pacientes</span>
+                </a>
+
+                <a class="sidebar__link" href="./medicos.html">
+                    <span class="sidebar__icon">⚕</span>
+                    <span>Médicos</span>
+                </a>
+
+                <a class="sidebar__link" href="./consultas.html">
+                    <span class="sidebar__icon">▣</span>
+                    <span>Consultas</span>
+                </a>
+
+                <a class="sidebar__link" href="./exames.html">
+                    <span class="sidebar__icon">▤</span>
+                    <span>Exames</span>
+                </a>
+
+                <a class="sidebar__link" href="./feedback.html">
+                    <span class="sidebar__icon">♡</span>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar__footer">
+                <a class="sidebar__link" href="./login.html">
+                    <span class="sidebar__icon">↪</span>
+                    <span>Sair</span>
+                </a>
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="app-layout__content">
+
+            <!-- CABEÇALHO -->
+            <header class="topbar">
+                <div class="topbar__heading">
+                    <p class="topbar__eyebrow">SIGOH / Painel</p>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="topbar__profile">
+                    <div class="topbar__avatar">A</div>
+
+                    <div class="topbar__profile-info">
+                        <strong>Administrador</strong>
+                        <span>Área administrativa</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- DASHBOARD -->
+            <main class="dashboard">
+
+                <section class="page-heading">
+                    <div>
+                        <h2>Visão geral</h2>
+                        <p>
+                            Acompanhe as principais informações
+                            da gestão hospitalar.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- INDICADORES -->
+                <section class="dashboard__stats"
+                         aria-label="Indicadores do hospital">
+
+                    <article class="stat-card">
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Pacientes cadastrados
+                            </span>
+                            <span class="stat-card__icon">♙</span>
+                        </div>
+
+                        <p class="stat-card__value">1.248</p>
+                        <p class="stat-card__description">
+                            Total demonstrativo
+                        </p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Médicos cadastrados
+                            </span>
+                            <span class="stat-card__icon">⚕</span>
+                        </div>
+
+                        <p class="stat-card__value">42</p>
+                        <p class="stat-card__description">
+                            Total demonstrativo
+                        </p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Consultas de hoje
+                            </span>
+                            <span class="stat-card__icon">▣</span>
+                        </div>
+
+                        <p class="stat-card__value">86</p>
+                        <p class="stat-card__description">
+                            Agenda demonstrativa
+                        </p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Exames pendentes
+                            </span>
+                            <span class="stat-card__icon">▤</span>
+                        </div>
+
+                        <p class="stat-card__value">24</p>
+                        <p class="stat-card__description">
+                            Total demonstrativo
+                        </p>
+                    </article>
+
+                </section>
+
+                <!-- CONSULTAS RECENTES -->
+                <section class="dashboard__appointments">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Consultas recentes</h2>
+                            <p>Exemplo de agenda hospitalar.</p>
+                        </div>
+
+                        <a href="./consultas.html">
+                            Ver consultas
+                        </a>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Paciente</th>
+                                    <th>Médico</th>
+                                    <th>Horário</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Paciente demonstrativo A</td>
+                                    <td>Dr. Carlos Menezes</td>
+                                    <td>08:00</td>
+                                    <td>
+                                        <span class="status status--scheduled">
+                                            Agendada
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Paciente demonstrativo B</td>
+                                    <td>Dra. Fernanda Lima</td>
+                                    <td>09:30</td>
+                                    <td>
+                                        <span class="status status--progress">
+                                            Em andamento
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Paciente demonstrativo C</td>
+                                    <td>Dr. André Costa</td>
+                                    <td>10:00</td>
+                                    <td>
+                                        <span class="status status--finished">
+                                            Finalizada
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
