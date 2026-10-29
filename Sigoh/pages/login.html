@@ -1,53 +1,125 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Login - SIGOH Sistema de Gestão Ortopédica Hospitalar">
-    <title>Login | SIGOH</title>
+    <title>SIGOH | Autenticação</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/tema.js" defer></script>
 </head>
-
 <body>
-
-    <main class="login-container">
-        <section class="card-login">
-            <header class="sigoh-header">
-                <h1 class="sigoh-titulo">SIGOH</h1>
-                <p class="sigoh-subtitulo">Sistema de Gestão Ortopédica Hospitalar</p>
+    <div class="split-wrapper">
+        <main class="left-pane">
+            <header class="pane-top-bar">
+                <div class="sigoh-brand">
+                    <svg viewBox="0 0 160 140" width="48" height="42" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="22" y="6" width="6" height="88" fill="var(--logo-leaf)" rx="2"/>
+                        <path d="M28 92 L46 92 C40 76 38 60 42 42 C45 28 52 18 58 12 C48 16 40 24 36 36 C32 26 24 18 14 14 C20 22 26 32 28 44 C20 36 12 34 6 36 C14 42 22 48 26 58 C18 54 10 54 4 58 C12 62 20 68 26 78 Z" fill="var(--logo-tree)"/>
+                        <ellipse cx="20" cy="20" rx="6" ry="4" transform="rotate(-30 20 20)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="36" cy="14" rx="6" ry="4" transform="rotate(-60 36 14)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="48" cy="22" rx="6" ry="4" transform="rotate(-25 48 22)" fill="var(--logo-leaf)"/>
+                        <path d="M20 64 L42 54 M20 72 L44 78" stroke="var(--color-primary-light)" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M48 40 H58 V30 H68 V40 H78 V50 H68 V60 H58 V50 H48 Z" fill="var(--logo-cross)"/>
+                        <path d="M64 6 L76 6 L92 38 C96 46 90 54 82 54 C74 54 70 48 70 42 L64 6 Z" fill="var(--logo-joint)"/>
+                        <path d="M82 60 C90 60 96 68 92 76 L76 86 L64 86 L70 68 C70 62 74 60 82 60 Z" fill="var(--logo-joint)"/>
+                        <path d="M88 16 A34 34 0 0 1 88 80" fill="none" stroke="var(--logo-arc)" stroke-width="6" stroke-linecap="round"/>
+                    </svg>
+                    <div class="brand-text">
+                        <h1>SIGOH</h1>
+                        <p>Ortopedia Hospitalar</p>
+                    </div>
+                </div>
+                <button type="button" id="toggle-tema" class="btn-tema">🌙 Modo Noturno</button>
             </header>
 
-            <div class="login-boas-vindas">
+            <section class="intro-text">
                 <h2>Bem-vindo de volta</h2>
-                <p>Entre com suas credenciais para acessar o sistema.</p>
+                <p>Selecione seu perfil e acesse com credenciais hospitalares seguras.</p>
+            </section>
+
+            <!-- Perfil com "Enfermeiro" -->
+            <div class="profile-selector" role="tablist" aria-label="Perfil de acesso">
+                <button type="button" class="btn-profile active" data-perfil="medico">👨‍⚕️ Médico</button>
+                <button type="button" class="btn-profile" data-perfil="enfermeiro">👩‍⚕️ Enfermeiro</button>
+                <button type="button" class="btn-profile" data-perfil="paciente">🧑‍🦽 Paciente</button>
             </div>
 
-            <form class="login-form">
-                <div class="form-grupo">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+            <form class="auth-form" action="#" method="POST">
+                <div class="field-group">
+                    <label for="email" id="label-email">E-mail Corporativo</label>
+                    <input type="email" id="email" name="email" placeholder="medico@hospital.com.br" required>
                 </div>
 
-                <div class="form-grupo">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                <div class="field-group">
+                    <label for="senha">Senha de Acesso</label>
+                    <input type="password" id="senha" name="senha" placeholder="••••••••" required>
                 </div>
 
-                <button type="submit" class="btn-acessar">Entrar no sistema</button>
+                <button type="submit" class="btn-primary">Entrar no Sistema</button>
             </form>
 
-            <a href="../index.html" class="btn-voltar">
-                &larr; Voltar para a página inicial
-            </a>
+            <nav style="text-align: center;">
+                <a href="../index.html" class="btn-link transicao-link">&larr; Voltar para a página inicial</a>
+            </nav>
 
-            <footer class="card-footer">
-                <p>SIGOH &copy; 2026</p>
-                <small>Sistema acadêmico demonstrativo</small>
+            <footer class="pane-footer">
+                <p>SIGOH &copy; 2026 • Ambiente Protegido e Criptografado</p>
             </footer>
-        </section>
-    </main>
+        </main>
 
+        <aside class="right-pane" aria-label="Métricas hospitalares">
+            <div class="pattern-overlay"></div>
+
+            <div class="dashboard-arena">
+                <article class="info-card card-top-left">
+                    <p class="card-label">Pacientes Ativos</p>
+                    <p class="card-value">1.248</p>
+                    <span class="card-badge">▲ +12% este mês</span>
+                </article>
+
+                <article class="info-card card-top-right">
+                    <p class="card-label">Cirurgias Ortopédicas</p>
+                    <p class="card-value">84</p>
+                    <span class="card-badge">▲ 5 agendadas hoje</span>
+                </article>
+
+                <!-- Centro: Logo Aumentada e em Português -->
+                <div class="central-logo">
+                    <svg viewBox="0 0 160 140" width="165" height="140" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="22" y="6" width="6" height="88" fill="var(--logo-leaf)" rx="2"/>
+                        <path d="M28 92 L46 92 C40 76 38 60 42 42 C45 28 52 18 58 12 C48 16 40 24 36 36 C32 26 24 18 14 14 C20 22 26 32 28 44 C20 36 12 34 6 36 C14 42 22 48 26 58 C18 54 10 54 4 58 C12 62 20 68 26 78 Z" fill="var(--logo-tree)"/>
+                        <ellipse cx="20" cy="20" rx="6" ry="4" transform="rotate(-30 20 20)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="36" cy="14" rx="6" ry="4" transform="rotate(-60 36 14)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="48" cy="22" rx="6" ry="4" transform="rotate(-25 48 22)" fill="var(--logo-leaf)"/>
+                        <path d="M20 64 L42 54 M20 72 L44 78" stroke="var(--color-primary-light)" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M48 40 H58 V30 H68 V40 H78 V50 H68 V60 H58 V50 H48 Z" fill="var(--logo-cross)"/>
+                        <path d="M64 6 L76 6 L92 38 C96 46 90 54 82 54 C74 54 70 48 70 42 L64 6 Z" fill="var(--logo-joint)"/>
+                        <path d="M82 60 C90 60 96 68 92 76 L76 86 L64 86 L70 68 C70 62 74 60 82 60 Z" fill="var(--logo-joint)"/>
+                        <path d="M88 16 A34 34 0 0 1 88 80" fill="none" stroke="var(--logo-arc)" stroke-width="6" stroke-linecap="round"/>
+                    </svg>
+                    <h3>SIGOH</h3>
+                    <p>Sistema de Gestão Ortopédica Hospitalar</p>
+                </div>
+
+                <article class="info-card card-bottom-left">
+                    <p class="card-label">Consultas Hoje</p>
+                    <p class="card-value">37</p>
+                    <span class="card-badge" style="color: var(--color-primary);">● 3 em atendimento</span>
+                </article>
+
+                <article class="info-card card-bottom-right">
+                    <p class="card-label">Recuperação Articular</p>
+                    <p class="card-value">96,2%</p>
+                    <span class="card-badge">▲ Índice Excelente</span>
+                </article>
+            </div>
+
+            <div class="status-pill-bar">
+                <span>📋 Prontuário Digital</span>
+                <span>🦴 Ortopedia & Trauma</span>
+                <span>💻 Acesso Multiplataforma</span>
+            </div>
+        </aside>
+    </div>
 </body>
-
 </html>
