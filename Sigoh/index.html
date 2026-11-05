@@ -1,59 +1,117 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SIGOH - Sistema de Gestão Ortopédica Hospitalar">
-    <title>SIGOH | Gestão Ortopédica Hospitalar</title>
+    <title>SIGOH | Início</title>
     <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/tema.js" defer></script>
 </head>
-
 <body>
-
-    <main class="home-container">
-        <section class="card-home">
-            <header class="sigoh-header">
-                <div class="logo-marca-dagua">
-                    <svg viewBox="0 0 360 220" width="260" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logotipo SIGOH">
-                        <g transform="translate(85, 8)">
-                            <rect x="44" y="8" width="8" height="112" fill="#3893D5" rx="2"/>
-                            <path d="M52 120 L78 120 C70 98 66 75 72 52 C77 35 88 22 96 15 C82 20 70 32 64 48 C58 34 46 22 32 18 C42 28 50 42 52 58 C40 48 26 44 14 46 C26 54 38 64 46 78 C34 72 20 72 10 78 C24 82 38 92 48 106 Z" fill="#243F56"/>
-                            <ellipse cx="36" cy="28" rx="9" ry="5" transform="rotate(-30 36 28)" fill="#3893D5"/>
-                            <ellipse cx="62" cy="18" rx="9" ry="5" transform="rotate(-60 62 18)" fill="#3893D5"/>
-                            <ellipse cx="82" cy="28" rx="9" ry="5" transform="rotate(-25 82 28)" fill="#3893D5"/>
-                            <ellipse cx="22" cy="52" rx="9" ry="5" transform="rotate(-15 22 52)" fill="#3893D5"/>
-                            <path d="M40 84 L74 72 M40 94 L76 102" stroke="#E2F4FA" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M78 52 H92 V38 H106 V52 H120 V66 H106 V80 H92 V66 H78 Z" fill="#243F56"/>
-                            <path d="M98 8 L114 8 L136 52 C142 64 134 76 122 76 C112 76 106 68 106 58 L98 8 Z" fill="#3893D5"/>
-                            <path d="M122 84 C134 84 142 96 136 108 L114 120 L98 120 L106 96 C106 88 112 84 122 84 Z" fill="#3893D5"/>
-                            <path d="M132 22 A48 48 0 0 1 132 114" fill="none" stroke="#243F56" stroke-width="9" stroke-linecap="round"/>
-                        </g>
-                        <text x="180" y="185" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" fill="#243F56" letter-spacing="4">SIGOH</text>
+    <div class="split-wrapper">
+        <main class="left-pane">
+            <header class="pane-top-bar">
+                <div class="sigoh-brand">
+                    <svg viewBox="0 0 160 140" width="48" height="42" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="22" y="6" width="6" height="88" fill="var(--logo-leaf)" rx="2"/>
+                        <path d="M28 92 L46 92 C40 76 38 60 42 42 C45 28 52 18 58 12 C48 16 40 24 36 36 C32 26 24 18 14 14 C20 22 26 32 28 44 C20 36 12 34 6 36 C14 42 22 48 26 58 C18 54 10 54 4 58 C12 62 20 68 26 78 Z" fill="var(--logo-tree)"/>
+                        <ellipse cx="20" cy="20" rx="6" ry="4" transform="rotate(-30 20 20)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="36" cy="14" rx="6" ry="4" transform="rotate(-60 36 14)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="48" cy="22" rx="6" ry="4" transform="rotate(-25 48 22)" fill="var(--logo-leaf)"/>
+                        <path d="M20 64 L42 54 M20 72 L44 78" stroke="var(--color-primary-light)" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M48 40 H58 V30 H68 V40 H78 V50 H68 V60 H58 V50 H48 Z" fill="var(--logo-cross)"/>
+                        <path d="M64 6 L76 6 L92 38 C96 46 90 54 82 54 C74 54 70 48 70 42 L64 6 Z" fill="var(--logo-joint)"/>
+                        <path d="M82 60 C90 60 96 68 92 76 L76 86 L64 86 L70 68 C70 62 74 60 82 60 Z" fill="var(--logo-joint)"/>
+                        <path d="M88 16 A34 34 0 0 1 88 80" fill="none" stroke="var(--logo-arc)" stroke-width="6" stroke-linecap="round"/>
                     </svg>
+                    <div class="brand-text">
+                        <h1>SIGOH</h1>
+                        <p>Ortopedia Hospitalar</p>
+                    </div>
                 </div>
-                <p class="sigoh-subtitulo">Sistema de Gestão Ortopédica Hospitalar</p>
+                <button type="button" id="toggle-tema" class="btn-tema">🌙 Modo Noturno</button>
             </header>
 
-            <ul class="modulos-lista" aria-label="Especialidades atendidas">
-                <li class="modulo-pill">Ambulatório</li>
-                <li class="modulo-pill">Traumatologia</li>
-                <li class="modulo-pill">Cirurgia</li>
+            <div class="plantao-status">
+                <span class="dot-pulse"></span>
+                <span>Plantão de Trauma 24h: Operação Normal (8 Leitos Livres)</span>
+            </div>
+
+            <section class="intro-text">
+                <h2>Sistema de Gestão Ortopédica Hospitalar</h2>
+                <p>Plataforma clínica dedicada ao acompanhamento cirúrgico, controle de leitos de traumatologia e prontuários biomecânicos em tempo real.</p>
+            </section>
+
+            <ul class="modulos-grid" aria-label="Especialidades">
+                <li class="modulo-item">🏥 Ambulatório</li>
+                <li class="modulo-item">🦴 Traumatologia</li>
+                <li class="modulo-item">🔬 Cirurgia Ortopédica</li>
             </ul>
 
-            <nav aria-label="Navegação inicial">
-                <a href="./pages/login.html" class="btn-acessar">
-                    Acessar sistema
+            <nav aria-label="Acesso principal">
+                <a href="./pages/login.html" class="btn-primary transicao-link">
+                    Acessar Plataforma &rarr;
                 </a>
             </nav>
 
-            <footer class="card-footer">
-                <p>SIGOH &copy; 2026</p>
-                <small>Sistema acadêmico demonstrativo</small>
+            <footer class="pane-footer">
+                <p>SIGOH &copy; 2026 • Sistema de Gestão Acadêmica</p>
             </footer>
-        </section>
-    </main>
+        </main>
 
+        <aside class="right-pane" aria-label="Métricas hospitalares">
+            <div class="pattern-overlay"></div>
+
+            <div class="dashboard-arena">
+                <article class="info-card card-top-left">
+                    <p class="card-label">Pacientes Ativos</p>
+                    <p class="card-value">1.248</p>
+                    <span class="card-badge">▲ +12% este mês</span>
+                </article>
+
+                <article class="info-card card-top-right">
+                    <p class="card-label">Cirurgias Ortopédicas</p>
+                    <p class="card-value">84</p>
+                    <span class="card-badge">▲ 5 agendadas hoje</span>
+                </article>
+
+                <!-- Centro: Logo Aumentada e em Português -->
+                <div class="central-logo">
+                    <svg viewBox="0 0 160 140" width="165" height="140" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="22" y="6" width="6" height="88" fill="var(--logo-leaf)" rx="2"/>
+                        <path d="M28 92 L46 92 C40 76 38 60 42 42 C45 28 52 18 58 12 C48 16 40 24 36 36 C32 26 24 18 14 14 C20 22 26 32 28 44 C20 36 12 34 6 36 C14 42 22 48 26 58 C18 54 10 54 4 58 C12 62 20 68 26 78 Z" fill="var(--logo-tree)"/>
+                        <ellipse cx="20" cy="20" rx="6" ry="4" transform="rotate(-30 20 20)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="36" cy="14" rx="6" ry="4" transform="rotate(-60 36 14)" fill="var(--logo-leaf)"/>
+                        <ellipse cx="48" cy="22" rx="6" ry="4" transform="rotate(-25 48 22)" fill="var(--logo-leaf)"/>
+                        <path d="M20 64 L42 54 M20 72 L44 78" stroke="var(--color-primary-light)" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M48 40 H58 V30 H68 V40 H78 V50 H68 V60 H58 V50 H48 Z" fill="var(--logo-cross)"/>
+                        <path d="M64 6 L76 6 L92 38 C96 46 90 54 82 54 C74 54 70 48 70 42 L64 6 Z" fill="var(--logo-joint)"/>
+                        <path d="M82 60 C90 60 96 68 92 76 L76 86 L64 86 L70 68 C70 62 74 60 82 60 Z" fill="var(--logo-joint)"/>
+                        <path d="M88 16 A34 34 0 0 1 88 80" fill="none" stroke="var(--logo-arc)" stroke-width="6" stroke-linecap="round"/>
+                    </svg>
+                    <h3>SIGOH</h3>
+                    <p>Sistema de Gestão Ortopédica Hospitalar</p>
+                </div>
+
+                <article class="info-card card-bottom-left">
+                    <p class="card-label">Consultas Hoje</p>
+                    <p class="card-value">37</p>
+                    <span class="card-badge" style="color: var(--color-primary);">● 3 em atendimento</span>
+                </article>
+
+                <article class="info-card card-bottom-right">
+                    <p class="card-label">Recuperação Articular</p>
+                    <p class="card-value">96,2%</p>
+                    <span class="card-badge">▲ Índice Excelente</span>
+                </article>
+            </div>
+
+            <div class="status-pill-bar">
+                <span>📋 Prontuário Digital</span>
+                <span>🦴 Ortopedia & Trauma</span>
+                <span>💻 Acesso Multiplataforma</span>
+            </div>
+        </aside>
+    </div>
 </body>
-
 </html>
