@@ -4,72 +4,118 @@
 ======================================== */
 
 .app-layout {
-    display: flex;
     min-height: 100vh;
-    background-color: var(--color-background);
 }
 
 .app-layout__content {
-    flex: 1;
+    min-height: 100vh;
+    margin-left: 70px;
+    width: calc(100% - 70px);
     min-width: 0;
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
 }
 
+
 /* ========================================
-   BARRA LATERAL
+   BARRA LATERAL RETRÁTIL
 ======================================== */
 
 .sidebar {
-    width: var(--sidebar-width);
-    min-width: var(--sidebar-width);
-    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 70px;
+    height: 100vh;
+    padding: 24px 12px;
+
     display: flex;
     flex-direction: column;
-    padding: 24px 16px;
-    background-color: var(--color-surface);
-    border-right: 1px solid var(--color-border);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: #287FB5;
+    color: #FFFFFF;
+    border-radius: 0 24px 24px 0;
+    box-shadow: 8px 0 30px rgb(23 59 87 / 8%);
+
+    transition:
+        width 0.28s ease,
+        padding 0.28s ease;
 }
 
+.sidebar:hover,
+.sidebar:focus-within {
+    width: var(--sidebar-width);
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+/* Marca SIGOH */
+
 .sidebar__brand {
+    min-height: 48px;
     display: flex;
     align-items: center;
     gap: 12px;
+
     margin-bottom: 36px;
-    padding: 4px 8px;
-    color: var(--color-text);
+    padding: 4px 5px;
+
+    color: #FFFFFF;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .sidebar__brand-icon {
-    width: 42px;
-    height: 42px;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-md);
-    background-color: var(--color-primary);
+
+    border-radius: 15px;
+    background: #3E7DA2;
     color: #FFFFFF;
-    font-size: 30px;
-    font-weight: 700;
+
+    font-size: 28px;
+    font-weight: 600;
 }
 
 .sidebar__brand-text {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
+
+    min-width: 0;
+    opacity: 0;
+
+    transition: opacity 0.18s ease;
+}
+
+.sidebar:hover .sidebar__brand-text,
+.sidebar:focus-within .sidebar__brand-text {
+    opacity: 1;
 }
 
 .sidebar__brand-text strong {
-    font-size: 20px;
+    font-size: 17px;
+    letter-spacing: 0.4px;
 }
 
 .sidebar__brand-text small {
-    color: var(--color-text-muted);
+    color: #C4D5E2;
     font-size: 11px;
 }
 
-/* Links do menu */
+/* Links */
 
 .sidebar__nav {
     display: flex;
@@ -78,40 +124,59 @@
 }
 
 .sidebar__link {
+    min-height: 48px;
+
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
-    font-size: 14px;
+    gap: 14px;
+
+    padding: 0 12px;
+    border-radius: 15px;
+
+    color: #C4D5E2;
     text-decoration: none;
+    white-space: nowrap;
+
     transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .sidebar__link:hover {
-    background-color: var(--color-primary-light);
-    color: var(--color-primary-dark);
+    background: rgb(255 255 255 / 9%);
+    color: #FFFFFF;
 }
 
 .sidebar__link--active {
-    background-color: var(--color-primary);
+    background: #3E7DA2;
     color: #FFFFFF;
-    font-weight: 600;
 }
 
 .sidebar__link--active:hover {
-    background-color: var(--color-primary-dark);
-    color: #FFFFFF;
+    background: #4B8CB2;
 }
 
 .sidebar__icon {
-    width: 22px;
+    flex: 0 0 26px;
+    width: 26px;
+
     text-align: center;
-    font-size: 20px;
+    font-size: 21px;
 }
+
+/* Nomes aparecem ao expandir */
+
+.sidebar__link span:not(.sidebar__icon) {
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
+
+.sidebar:hover .sidebar__link span:not(.sidebar__icon),
+.sidebar:focus-within .sidebar__link span:not(.sidebar__icon) {
+    opacity: 1;
+}
+
+/* Rodapé da barra */
 
 .sidebar__footer {
     margin-top: auto;
@@ -119,24 +184,27 @@
 }
 
 /* ========================================
-   CABEÇALHO SUPERIOR
+   CABEÇALHO
 ======================================== */
 
 .topbar {
     min-height: var(--header-height);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 16px 32px;
-    background-color: var(--color-surface);
+
+    padding: 20px 36px;
+
+    background: rgb(255 255 255 / 85%);
     border-bottom: 1px solid var(--color-border);
 }
 
 .topbar__heading {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
 }
 
 .topbar__eyebrow {
@@ -148,24 +216,31 @@
 .topbar__heading h1 {
     margin: 0;
     color: var(--color-text);
-    font-size: 22px;
+
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -0.7px;
 }
 
 .topbar__profile {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .topbar__avatar {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 50%;
-    background-color: var(--color-primary-light);
+    background: var(--color-primary-light);
     color: var(--color-primary-dark);
+
     font-weight: 700;
 }
 
@@ -176,8 +251,8 @@
 }
 
 .topbar__profile-info strong {
-    color: var(--color-text);
     font-size: 13px;
+    font-weight: 600;
 }
 
 .topbar__profile-info span {
@@ -189,50 +264,37 @@
    RESPONSIVIDADE
 ======================================== */
 
-@media (max-width: 760px) {
-    .app-layout {
-        flex-direction: column;
-    }
-
+@media (max-width: 600px) {
     .sidebar {
-        width: 100%;
-        min-width: 0;
-        min-height: auto;
-        padding: 16px;
-        border-right: none;
-        border-bottom: 1px solid var(--color-border);
+        width: 64px;
+        padding: 18px 8px;
     }
 
-    .sidebar__brand {
-        margin-bottom: 16px;
+    .sidebar:hover,
+    .sidebar:focus-within {
+        width: 235px;
+        padding-right: 14px;
+        padding-left: 14px;
     }
 
-    .sidebar__nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .sidebar__link {
-        padding: 10px;
-    }
-
-    .sidebar__footer {
-        margin-top: 12px;
-        padding-top: 0;
+    .app-layout__content {
+        margin-left: 64px;
     }
 
     .topbar {
-        padding: 16px;
+        padding: 18px 16px;
     }
-}
 
-@media (max-width: 420px) {
     .topbar__profile-info {
         display: none;
     }
+}
 
-    .sidebar__link {
-        font-size: 12px;
-        gap: 6px;
+@media (prefers-reduced-motion: reduce) {
+    .sidebar,
+    .sidebar__link,
+    .sidebar__brand-text,
+    .sidebar__link span:not(.sidebar__icon) {
+        transition: none;
     }
 }

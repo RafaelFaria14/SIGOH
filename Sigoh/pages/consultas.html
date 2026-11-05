@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Gerenciamento de consultas médicas SIGOH">
+
+    <title>Consultas | SIGOH</title>
+
+    <!-- CSS principal: configurações gerais e variáveis -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- CSS compartilhado: sidebar e cabeçalho -->
+    <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
+
+    <!-- CSS específico da página de consultas -->
+    <link rel="stylesheet" href="../css/paginas.css/consultas.css">
+
+</head>
+
+<body class="consultas-page">
+
+    <!-- ESTRUTURA PRINCIPAL DO SISTEMA -->
+    <div class="app-layout">
+
+
+        <!-- SIDEBAR: MENU LATERAL -->
+        <aside class="sidebar">
+
+            <!-- IDENTIDADE DO SISTEMA -->
+            <a class="sidebar__brand" href="../index.html">
+
+                <span class="sidebar__brand-icon">+</span>
+
+                <span class="sidebar__brand-text">
+                    <strong>SIGOH</strong>
+                    <small>Gestão Ortopédica</small>
+                </span>
+
+            </a>
+
+
+            <!-- LINKS DE NAVEGAÇÃO -->
+            <nav class="sidebar__nav" aria-label="Menu principal">
+
+                <a class="sidebar__link" href="./dashboard.html">
+                    <span class="sidebar__icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a class="sidebar__link" href="./pacientes.html">
+                    <span class="sidebar__icon">♙</span>
+                    <span>Pacientes</span>
+                </a>
+
+                <a class="sidebar__link" href="./medicos.html">
+                    <span class="sidebar__icon">⚕</span>
+                    <span>Médicos</span>
+                </a>
+
+                <a class="sidebar__link sidebar__link--active"
+                   href="./consultas.html"
+                   aria-current="page">
+
+                    <span class="sidebar__icon">▣</span>
+                    <span>Consultas</span>
+
+                </a>
+
+                <a class="sidebar__link" href="./exames.html">
+                    <span class="sidebar__icon">▤</span>
+                    <span>Exames</span>
+                </a>
+
+                <a class="sidebar__link" href="./feedback.html">
+                    <span class="sidebar__icon">♡</span>
+                    <span>Feedback</span>
+                </a>
+
+            </nav>
+
+
+            <!-- RODAPÉ DA SIDEBAR -->
+            <div class="sidebar__footer">
+
+                <a class="sidebar__link" href="./login.html">
+                    <span class="sidebar__icon">↪</span>
+                    <span>Sair</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO AO LADO DA SIDEBAR -->
+        <div class="app-layout__content">
+
+
+            <!-- CABEÇALHO SUPERIOR -->
+            <header class="topbar">
+
+                <div class="topbar__heading">
+
+                    <p class="topbar__eyebrow">
+                        SIGOH / Gerenciamento
+                    </p>
+
+                    <h1>Consultas</h1>
+
+                </div>
+
+
+                <!-- PERFIL DO USUÁRIO -->
+                <div class="topbar__profile">
+
+                    <div class="topbar__avatar">
+                        A
+                    </div>
+
+                    <div class="topbar__profile-info">
+                        <strong>Administrador</strong>
+                        <span>Área administrativa</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
+            <main class="consultas">
+
+
+                <!-- TÍTULO E DESCRIÇÃO -->
+                <section class="page-heading">
+
+                    <h2>Gerenciamento de consultas</h2>
+
+                    <p>
+                        Consulte, organize e acompanhe os atendimentos
+                        médicos do hospital.
+                    </p>
+
+                </section>
+
+
+                <!-- INDICADORES DE CONSULTAS -->
+                <section class="consultas__stats"
+                         aria-label="Resumo das consultas">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Total de consultas
+                            </span>
+
+                            <span class="stat-card__icon">▣</span>
+                        </div>
+
+                        <p class="stat-card__value">128</p>
+
+                        <p class="stat-card__description">
+                            Total demonstrativo
+                        </p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Agendadas
+                            </span>
+
+                            <span class="stat-card__icon">◷</span>
+                        </div>
+
+                        <p class="stat-card__value">42</p>
+
+                        <p class="stat-card__description">
+                            Aguardando atendimento
+                        </p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Em andamento
+                            </span>
+
+                            <span class="stat-card__icon">↻</span>
+                        </div>
+
+                        <p class="stat-card__value">08</p>
+
+                        <p class="stat-card__description">
+                            Atendimentos ativos
+                        </p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card__top">
+                            <span class="stat-card__label">
+                                Finalizadas
+                            </span>
+
+                            <span class="stat-card__icon">✓</span>
+                        </div>
+
+                        <p class="stat-card__value">78</p>
+
+                        <p class="stat-card__description">
+                            Atendimentos concluídos
+                        </p>
+
+                    </article>
+
+                </section>
+
+
+                <!-- ÁREA DE GERENCIAMENTO -->
+                <section class="consultas__management">
+
+
+                    <!-- TÍTULO E BOTÃO DE NOVA CONSULTA -->
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>Lista de consultas</h2>
+
+                            <p>
+                                Visualize e gerencie os atendimentos cadastrados.
+                            </p>
+                        </div>
+
+                        <button class="consultas__new-button" type="button">
+                            + Nova consulta
+                        </button>
+
+                    </div>
+
+
+                    <!-- PESQUISA E FILTROS -->
+                    <div class="consultas__filters">
+
+                        <div class="consultas__search">
+
+                            <label for="pesquisa-consulta">
+                                Pesquisar consulta
+                            </label>
+
+                            <input
+                                type="search"
+                                id="pesquisa-consulta"
+                                placeholder="Digite o nome do paciente..."
+                            >
+
+                        </div>
+
+
+                        <div class="consultas__filter">
+
+                            <label for="filtro-status">
+                                Filtrar por status
+                            </label>
+
+                            <select id="filtro-status">
+
+                                <option value="">
+                                    Todos os status
+                                </option>
+
+                                <option value="agendada">
+                                    Agendada
+                                </option>
+
+                                <option value="andamento">
+                                    Em andamento
+                                </option>
+
+                                <option value="finalizada">
+                                    Finalizada
+                                </option>
+
+                                <option value="cancelada">
+                                    Cancelada
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TABELA DE CONSULTAS -->
+                    <div class="table-container">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th scope="col">Paciente</th>
+                                    <th scope="col">Médico</th>
+                                    <th scope="col">Sala</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Horário</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <!-- CONSULTA 1 -->
+                                <tr>
+
+                                    <td>João da Silva</td>
+
+                                    <td>Dr. Carlos Menezes</td>
+
+                                    <td>Sala 01</td>
+
+                                    <td>05/11/2026</td>
+
+                                    <td>08:00</td>
+
+                                    <td>
+                                        <span class="status status--scheduled">
+                                            Agendada
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="consultas__action-button"
+                                            type="button">
+                                            Visualizar
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- CONSULTA 2 -->
+                                <tr>
+
+                                    <td>Maria Oliveira</td>
+
+                                    <td>Dra. Fernanda Lima</td>
+
+                                    <td>Sala 02</td>
+
+                                    <td>05/11/2026</td>
+
+                                    <td>09:30</td>
+
+                                    <td>
+                                        <span class="status status--progress">
+                                            Em andamento
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="consultas__action-button"
+                                            type="button">
+                                            Visualizar
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- CONSULTA 3 -->
+                                <tr>
+
+                                    <td>Pedro Santos</td>
+
+                                    <td>Dr. André Costa</td>
+
+                                    <td>Sala 03</td>
+
+                                    <td>05/11/2026</td>
+
+                                    <td>10:00</td>
+
+                                    <td>
+                                        <span class="status status--finished">
+                                            Finalizada
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="consultas__action-button"
+                                            type="button">
+                                            Visualizar
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- CONSULTA 4 -->
+                                <tr>
+
+                                    <td>Ana Ferreira</td>
+
+                                    <td>Dr. Carlos Menezes</td>
+
+                                    <td>Sala 01</td>
+
+                                    <td>05/11/2026</td>
+
+                                    <td>11:00</td>
+
+                                    <td>
+                                        <span class="status status--cancelled">
+                                            Cancelada
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="consultas__action-button"
+                                            type="button">
+                                            Visualizar
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

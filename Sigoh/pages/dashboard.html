@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Dashboard do SIGOH">
+    <meta name="description" content="Painel de gestão hospitalar SIGOH">
 
     <title>Dashboard | SIGOH</title>
-<link rel="stylesheet" href="../css/main.css">
-<link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
-<link rel="stylesheet" href="../css/paginas.css/dashboard.css">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
+    <link rel="stylesheet" href="../css/paginas.css/dashboard.css">
 </head>
 
 <body class="dashboard-page">
@@ -29,7 +29,7 @@
                 </span>
             </a>
 
-            <nav class="sidebar__nav" aria-label="Navegação principal">
+            <nav class="sidebar__nav" aria-label="Menu principal">
 
                 <a class="sidebar__link sidebar__link--active"
                    href="./dashboard.html"
@@ -74,11 +74,12 @@
 
         </aside>
 
-        <!-- CONTEÚDO PRINCIPAL -->
+        <!-- CONTEÚDO -->
         <div class="app-layout__content">
 
             <!-- CABEÇALHO -->
             <header class="topbar">
+
                 <div class="topbar__heading">
                     <p class="topbar__eyebrow">SIGOH / Painel</p>
                     <h1>Dashboard</h1>
@@ -92,19 +93,18 @@
                         <span>Área administrativa</span>
                     </div>
                 </div>
+
             </header>
 
             <!-- DASHBOARD -->
             <main class="dashboard">
 
                 <section class="page-heading">
-                    <div>
-                        <h2>Visão geral</h2>
-                        <p>
-                            Acompanhe as principais informações
-                            da gestão hospitalar.
-                        </p>
-                    </div>
+                    <h2>Visão geral</h2>
+                    <p>
+                        Acompanhe as principais informações
+                        da gestão hospitalar.
+                    </p>
                 </section>
 
                 <!-- INDICADORES -->
@@ -169,28 +169,26 @@
 
                 </section>
 
-                <!-- CONSULTAS RECENTES -->
+                <!-- AGENDA -->
                 <section class="dashboard__appointments">
 
                     <div class="section-heading">
                         <div>
                             <h2>Consultas recentes</h2>
-                            <p>Exemplo de agenda hospitalar.</p>
+                            <p>Resumo da agenda hospitalar.</p>
                         </div>
 
-                        <a href="./consultas.html">
-                            Ver consultas
-                        </a>
+                        <a href="./consultas.html">Ver consultas</a>
                     </div>
 
                     <div class="table-container">
                         <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>Paciente</th>
-                                    <th>Médico</th>
-                                    <th>Horário</th>
-                                    <th>Status</th>
+                                    <th scope="col">Paciente</th>
+                                    <th scope="col">Médico</th>
+                                    <th scope="col">Horário</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
 
@@ -234,9 +232,7 @@
                 </section>
 
             </main>
-
         </div>
-
     </div>
 
 </body>
