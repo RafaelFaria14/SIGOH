@@ -1,50 +1,123 @@
-﻿// Aplicação imediata do tema salvo no localStorage antes de pintar a tela
-(function() {
-  const temaSalvo = localStorage.getItem('sigo_theme');
-  if (temaSalvo === 'light') {
-    document.documentElement.classList.add('light-mode');
-  } else {
-    document.documentElement.classList.remove('light-mode');
-  }
+﻿
+// ==========================================
+// CONFIGURAÇÃO INICIAL DO TEMA
+// ==========================================
+
+(function () {
+
+    const temaSalvo = localStorage.getItem('sigo_theme');
+
+    // Padrão: modo claro
+    const temaInicial = temaSalvo || 'light';
+
+    document.documentElement.classList.toggle(
+        'light-mode',
+        temaInicial === 'light'
+    );
+
+    document.documentElement.classList.toggle(
+        'dark-mode',
+        temaInicial === 'dark'
+    );
+
+    // Salva o tema inicial caso ainda não exista
+    if (!temaSalvo) {
+        localStorage.setItem('sigo_theme', 'light');
+    }
+
 })();
 
+
+// ==========================================
+// FUNCIONAMENTO DO BOTÃO DARK / LIGHT
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
-  const isLight = document.documentElement.classList.contains('light-mode');
-  atualizarBotoes(isLight);
 
-  // Vincula evento de alternância a qualquer botão de tema presente na página
-  document.querySelectorAll('#themeToggle, .theme-toggle-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const novoEstadoLight = document.documentElement.classList.toggle('light-mode');
-      if (document.body) {
-        document.body.classList.toggle('light-mode', novoEstadoLight);
-      }
-      localStorage.setItem('sigo_theme', novoEstadoLight ? 'light' : 'dark');
-      atualizarBotoes(novoEstadoLight);
-    });
-  });
+    // Localiza os botões de tema
+    const botoesTema = document.querySelectorAll(
+        '#toggle-tema, #themeToggle, .btn-tema, .theme-toggle-btn'
+    );
 
-  function atualizarBotoes(light) {
-    document.querySelectorAll('#themeToggle, .theme-toggle-btn').forEach(btn => {
-      const emojiSpan = btn.querySelector('.theme-emoji');
-      const labelSpan = btn.querySelector('.theme-label');
-      if (light) {
-        if (emojiSpan) emojiSpan.textContent = '🌙';
-        if (labelSpan) labelSpan.textContent = 'Modo Noturno';
-      } else {
-        if (emojiSpan) emojiSpan.textContent = '☀️';
-        if (labelSpan) labelSpan.textContent = 'Modo Claro';
-      }
+    function atualizarTema(temaClaro) {
+
+        // Aplica o tema no HTML e no BODY
+        document.documentElement.classList.toggle(
+            'light-mode',
+            temaClaro
+        );
+
+        document.documentElement.classList.toggle(
+            'dark-mode',
+            !temaClaro
+        );
+
+        document.body.classList.toggle(
+            'light-mode',
+            temaClaro
+        );
+
+        document.body.classList.toggle(
+            'dark-mode',
+            !temaClaro
+        );
+
+        // Atualiza o botão
+        botoesTema.forEach(botao => {
+
+            botao.textContent = temaClaro
+                ? '🌙 Modo Noturno'
+                : '☀️ Modo Claro';
+
+        });
+
+        // Salva a preferência
+        localStorage.setItem(
+            'sigo_theme',
+            temaClaro ? 'light' : 'dark'
+        );
+    }
+
+    // Atualiza o texto inicial dos botões
+    const temaAtual = localStorage.getItem('sigo_theme');
+
+    atualizarTema(temaAtual !== 'dark');
+
+    // Evento de clique
+    botoesTema.forEach(botao => {
+
+        botao.addEventListener('click', (event) => {
+
+            event.preventDefault();
+
+            const estaClaro = document.documentElement.classList.contains(
+                'light-mode'
+            );
+
+            atualizarTema(!estaClaro);
+
+        });
+
     });
-  }
+
 });
 
-// Função universal de navegação com transição suave (degradê de troca)
-window.irPara = function(url) {
-  const wrapper = document.querySelector('.page-wrapper') || document.body;
-  wrapper.classList.add('page-fade-out');
-  setTimeout(() => {
-    window.location.href = url;
-  }, 220);
+
+// ==========================================
+// NAVEGAÇÃO COM TRANSIÇÃO SUAVE
+// ==========================================
+
+window.irPara = function (url) {
+
+    const wrapper = document.querySelector('.page-wrapper')
+        || document.body;
+
+    wrapper.classList.add('page-fade-out');
+
+    setTimeout(() => {
+
+        window.location.href = url;
+
+    }, 220);
+
 };
