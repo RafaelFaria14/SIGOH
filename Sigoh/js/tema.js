@@ -1,61 +1,50 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
-    const wrapper = document.querySelector(".split-wrapper");
-    if (wrapper) wrapper.classList.add("page-fade-in");
+﻿// Aplicação imediata do tema salvo no localStorage antes de pintar a tela
+(function() {
+  const temaSalvo = localStorage.getItem('sigo_theme');
+  if (temaSalvo === 'light') {
+    document.documentElement.classList.add('light-mode');
+  } else {
+    document.documentElement.classList.remove('light-mode');
+  }
+})();
 
-    // Transição Suave
-    const transitionLinks = document.querySelectorAll(".transicao-link");
-    transitionLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const destino = link.getAttribute("href");
-            if (wrapper) {
-                wrapper.classList.remove("page-fade-in");
-                wrapper.classList.add("page-fade-out");
-            }
-            setTimeout(() => {
-                window.location.href = destino;
-            }, 340);
-        });
+document.addEventListener('DOMContentLoaded', () => {
+  const isLight = document.documentElement.classList.contains('light-mode');
+  atualizarBotoes(isLight);
+
+  // Vincula evento de alternância a qualquer botão de tema presente na página
+  document.querySelectorAll('#themeToggle, .theme-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const novoEstadoLight = document.documentElement.classList.toggle('light-mode');
+      if (document.body) {
+        document.body.classList.toggle('light-mode', novoEstadoLight);
+      }
+      localStorage.setItem('sigo_theme', novoEstadoLight ? 'light' : 'dark');
+      atualizarBotoes(novoEstadoLight);
     });
+  });
 
-    // Alternador de Modo Noturno
-    const btnToggle = document.getElementById("toggle-tema");
-    const temaSalvo = localStorage.getItem("sigoh-theme") || "light";
-
-    if (temaSalvo === "dark") {
-        document.body.classList.add("dark-mode");
-        if (btnToggle) btnToggle.textContent = "☀️ Modo Claro";
-    }
-
-    if (btnToggle) {
-        btnToggle.addEventListener("click", () => {
-            const isDark = document.body.classList.toggle("dark-mode");
-            localStorage.setItem("sigoh-theme", isDark ? "dark" : "light");
-            btnToggle.textContent = isDark ? "☀️ Modo Claro" : "🌙 Modo Noturno";
-        });
-    }
-
-    // Seletor de Perfil (Médico / Enfermeiro / Paciente)
-    const perfilBtns = document.querySelectorAll(".btn-profile");
-    const emailLabel = document.getElementById("label-email");
-    const emailInput = document.getElementById("email");
-
-    perfilBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            perfilBtns.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-
-            const tipoPerfil = btn.getAttribute("data-perfil");
-            if (tipoPerfil === "paciente") {
-                if (emailLabel) emailLabel.textContent = "E-mail";
-                if (emailInput) emailInput.placeholder = "paciente@email.com";
-            } else if (tipoPerfil === "enfermeiro") {
-                if (emailLabel) emailLabel.textContent = "E-mail Corporativo";
-                if (emailInput) emailInput.placeholder = "enfermeiro@hospital.com.br";
-            } else {
-                if (emailLabel) emailLabel.textContent = "E-mail Corporativo";
-                if (emailInput) emailInput.placeholder = "medico@hospital.com.br";
-            }
-        });
+  function atualizarBotoes(light) {
+    document.querySelectorAll('#themeToggle, .theme-toggle-btn').forEach(btn => {
+      const emojiSpan = btn.querySelector('.theme-emoji');
+      const labelSpan = btn.querySelector('.theme-label');
+      if (light) {
+        if (emojiSpan) emojiSpan.textContent = '🌙';
+        if (labelSpan) labelSpan.textContent = 'Modo Noturno';
+      } else {
+        if (emojiSpan) emojiSpan.textContent = '☀️';
+        if (labelSpan) labelSpan.textContent = 'Modo Claro';
+      }
     });
+  }
 });
+
+// Função universal de navegação com transição suave (degradê de troca)
+window.irPara = function(url) {
+  const wrapper = document.querySelector('.page-wrapper') || document.body;
+  wrapper.classList.add('page-fade-out');
+  setTimeout(() => {
+    window.location.href = url;
+  }, 220);
+};

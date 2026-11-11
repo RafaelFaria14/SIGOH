@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGOH - Dashboard Hospitalar</title>
+  <link rel="stylesheet" href="../css/sigoh_layout.css">
+  <script>
+    if (localStorage.getItem('sigo_theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <div class="brand-logo">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="25" y="16" width="5.5" height="74" rx="2.7" class="logo-accent-elem"/>
+              <path class="logo-dark-elem" d="M30 84C28 78 28 66 35 54C37 50 36 42 33 34C31 31 29 27 24 33C21 37 17 38 18 31C19 25 24 23 27 22C31 21 35 24 37 30C39 36 39 44 38 50C43 42 41 32 38 28C42 27 46 31 46 35C45 42 41 52 38 58C40 68 39 76 37 84H30Z"/>
+              <ellipse class="logo-accent-elem" cx="34" cy="20" rx="3.5" ry="5"/>
+              <ellipse class="logo-accent-elem" cx="42" cy="24" rx="3.5" ry="4.5"/>
+              <path d="M24 64L38 56M24 74L38 66" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+              <path class="logo-dark-elem" d="M29 46C23 46 17 40 14 43C12 45 16 48 21 51C26 53 28 51 29 46Z"/>
+              <path class="logo-dark-elem" d="M27 60C21 60 15 54 12 57C10 59 14 62 19 65C24 67 26 65 27 60Z"/>
+              <path class="logo-dark-elem" d="M47 48H59V40H67V48H79V56H67V64H59V56H47V48Z"/>
+              <path class="logo-accent-elem" d="M72 16L65 42C64 48 70 57 78 54C84 52 86 44 83 38L79 16H72Z"/>
+              <path class="logo-accent-elem" d="M78 61C70 63 67 69 67 76L65 90H78C82 86 85 76 83 68C82 64 80 62 78 61Z"/>
+              <path class="logo-dark-stroke" d="M75 22C92 27 103 42 103 58C103 76 90 90 77 94" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sidebar-title-group">
+            <h2>SIGOH</h2>
+            <p>Ortopedia Hospitalar</p>
+          </div>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a href="dashboard.html"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a>
+          </li>
+          <li>
+            <a href="#"><span class="menu-icon">👥</span><span class="menu-text">Pacientes</span></a>
+          </li>
+          <li>
+            <a href="#"><span class="menu-icon">🩺</span><span class="menu-text">Médicos</span></a>
+          </li>
+          <li>
+            <a href="consultas.html" onclick="event.preventDefault(); irPara('consultas.html');"><span class="menu-icon">📅</span><span class="menu-text">Consultas</span></a>
+          </li>
+          <li>
+            <a href="#"><span class="menu-icon">📋</span><span class="menu-text">Exames</span></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="themeToggle" class="theme-toggle-btn" type="button" style="width: 100%; justify-content: center;">
+          <span class="theme-emoji">🌙</span>
+          <span class="theme-label">Modo Noturno</span>
+        </button>
+        <a href="../index.html" class="btn-sair" onclick="event.preventDefault(); irPara('../index.html');">
+          <span class="menu-icon">↩</span>
+          <span class="menu-text">Sair</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div>
+          <span class="breadcrumb">SIGOH / Painel Ortopédico</span>
+          <h1>Dashboard</h1>
+          <p>Acompanhe as principais informações da gestão hospitalar.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div>
+            <h3>Pacientes cadastrados</h3>
+            <div class="card-value">1.248</div>
+            <div class="card-legend">▲ +12% este mês</div>
+          </div>
+          <div class="card-icon">👥</div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Cirurgias agendadas</h3>
+            <div class="card-value">84</div>
+            <div class="card-legend">▲ 5 agendadas hoje</div>
+          </div>
+          <div class="card-icon">🩺</div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Consultas de hoje</h3>
+            <div class="card-value">37</div>
+            <div class="card-legend">● 3 em atendimento</div>
+          </div>
+          <div class="card-icon">📅</div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Recuperação Articular</h3>
+            <div class="card-value">96,2%</div>
+            <div class="card-legend">▲ Índice Excelente</div>
+          </div>
+          <div class="card-icon">📋</div>
+        </div>
+      </div>
+
+      <div class="table-panel">
+        <div class="table-top">
+          <h2>Consultas Recentes</h2>
+          <a href="consultas.html" onclick="event.preventDefault(); irPara('consultas.html');" style="color: var(--accent); font-weight: 600; text-decoration: none;">Ver todas</a>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Paciente</th><th>Médico Ortopedista</th><th>Horário</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Paciente demonstrativo A</td><td>Dr. Carlos Menezes</td><td>08:00</td><td><span class="status-badge status-agendada">Agendada</span></td></tr>
+              <tr><td>Paciente demonstrativo B</td><td>Dra. Fernanda Lima</td><td>09:30</td><td><span class="status-badge status-andamento">Em andamento</span></td></tr>
+              <tr><td>Paciente demonstrativo C</td><td>Dr. André Costa</td><td>10:00</td><td><span class="status-badge status-finalizada">Finalizada</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/tema.js"></script>
+</body>
+</html>
