@@ -1,13 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="br">
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
+
+    <!-- Configuração de caracteres -->
     <meta charset="UTF-8">
+
+    <!-- Adaptação para diferentes tamanhos de tela -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Descrição da página -->
+    <meta name="description" content="Gerenciamento de exames médicos SIGOH">
+
+    <!-- Título da aba do navegador -->
     <title>Exames | SIGOH</title>
-     <link rel="stylesheet" href="../css/main.css">
-     
+
+
+    <!-- CSS PRINCIPAL -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- CSS COMPARTILHADO: SIDEBAR E CABEÇALHO -->
+    <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
+
+    <!-- CSS ESPECÍFICO DA PÁGINA -->
+    <link rel="stylesheet" href="../css/paginas.css/exames.css">
+
 </head>
-<body>
-    
+
+
+<body class="exames-page">
+
+
+    <!-- ESTRUTURA PRINCIPAL -->
+    <div class="app-layout">
+
+
+        <!-- SIDEBAR GERADA PELO JAVASCRIPT -->
+        <div id="sidebar-container"></div>
+
+
+        <!-- CONTEÚDO DA PÁGINA -->
+        <div class="app-layout__content">
+
+
+            <!-- CABEÇALHO SUPERIOR -->
+            <header class="topbar">
+
+                <div class="topbar__heading">
+
+                    <p class="topbar__eyebrow">
+                        SIGOH / Gerenciamento
+                    </p>
+
+                    <h1>Exames</h1>
+
+                </div>
+
+
+                <!-- PERFIL DO USUÁRIO -->
+                <div class="topbar__profile">
+
+                    <div class="topbar__avatar">
+                        A
+                    </div>
+
+                    <div class="topbar__profile-info">
+
+                        <strong>Administrador</strong>
+
+                        <span>Área administrativa</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
+            <main class="exames">
+
+               
+            </main>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT DA SIDEBAR -->
+    <script src="../js/sidebar.js" defer></script>
+
 </body>
+
 </html>
