@@ -454,3 +454,57 @@ body.dark-mode .pattern-overlay {
         display: none;
     }
 }
+
+/* =========================================================
+   AJUSTE DEFINITIVO PARA .app-layout E .dashboard-page
+   ========================================================= */
+
+/* 1. Impede que a barra cubra o conteúdo */
+.dashboard-page .app-layout {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  padding-left: 260px !important; /* Afasta todo o conteúdo para a direita da barra */
+  box-sizing: border-box !important;
+}
+
+/* 2. Garante a barra lateral fixada na esquerda */
+.dashboard-page aside,
+.dashboard-page .sidebar,
+.dashboard-page [class*="sidebar"] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 250px !important;
+  z-index: 9999 !important;
+}
+
+/* 3. Área de conteúdo interno ajustada */
+.dashboard-page .app-layout > main,
+.dashboard-page .app-layout > div:not([class*="sidebar"]) {
+  flex: 1 !important;
+  width: 100% !important;
+  padding: 30px 40px !important;
+  box-sizing: border-box !important;
+}
+
+/* 4. Suporte ao Modo Noturno usando as variáveis do seu projeto */
+body.dark-mode {
+  --color-background: #07131e !important;
+  --color-text: #f8fafc !important;
+  --color-primary-light: rgba(15, 29, 45, 0.85) !important;
+  --color-border: rgba(255, 255, 255, 0.08) !important;
+  background-color: #07131e !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .app-layout {
+  background-color: #07131e !important;
+}
+
+body.dark-mode [class*="card"] {
+  background-color: rgba(15, 29, 45, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #f8fafc !important;
+}
