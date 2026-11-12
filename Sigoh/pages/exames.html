@@ -1,100 +1,222 @@
-<!DOCTYPE html>
-<html lang="br">
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-    <!-- Configuração de caracteres -->
-    <meta charset="UTF-8">
-
-    <!-- Adaptação para diferentes tamanhos de tela -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Descrição da página -->
-    <meta name="description" content="Gerenciamento de exames médicos SIGOH">
-
-    <!-- Título da aba do navegador -->
-    <title>Exames | SIGOH</title>
-
-
-    <!-- CSS PRINCIPAL -->
-    <link rel="stylesheet" href="../css/main.css">
-
-    <!-- CSS COMPARTILHADO: SIDEBAR E CABEÇALHO -->
-    <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
-
-    <!-- CSS ESPECÍFICO DA PÁGINA -->
-    <link rel="stylesheet" href="../css/paginas.css/exames.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGOH - Gerenciamento de Exames</title>
+  <link rel="stylesheet" href="../css/sigoh_layout.css">
+  <script>
+    if (localStorage.getItem('sigo_theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
 </head>
-
-
-<body class="exames-page">
-
-
-    <!-- ESTRUTURA PRINCIPAL -->
-    <div class="app-layout">
-
-
-        <!-- SIDEBAR GERADA PELO JAVASCRIPT -->
-        <div id="sidebar-container"></div>
-
-
-        <!-- CONTEÚDO DA PÁGINA -->
-        <div class="app-layout__content">
-
-
-            <!-- CABEÇALHO SUPERIOR -->
-            <header class="topbar">
-
-                <div class="topbar__heading">
-
-                    <p class="topbar__eyebrow">
-                        SIGOH / Gerenciamento
-                    </p>
-
-                    <h1>Exames</h1>
-
-                </div>
-
-
-                <!-- PERFIL DO USUÁRIO -->
-                <div class="topbar__profile">
-
-                    <div class="topbar__avatar">
-                        A
-                    </div>
-
-                    <div class="topbar__profile-info">
-
-                        <strong>Administrador</strong>
-
-                        <span>Área administrativa</span>
-
-                    </div>
-
-                </div>
-
-            </header>
-
-
-            <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
-            <main class="exames">
-
-               
-            </main>
-
-
+<body>
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <div class="brand-logo">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="25" y="16" width="5.5" height="74" rx="2.7" class="logo-accent-elem"/>
+              <path class="logo-dark-elem" d="M30 84C28 78 28 66 35 54C37 50 36 42 33 34C31 31 29 27 24 33C21 37 17 38 18 31C19 25 24 23 27 22C31 21 35 24 37 30C39 36 39 44 38 50C43 42 41 32 38 28C42 27 46 31 46 35C45 42 41 52 38 58C40 68 39 76 37 84H30Z"/>
+              <ellipse class="logo-accent-elem" cx="34" cy="20" rx="3.5" ry="5"/>
+              <ellipse class="logo-accent-elem" cx="42" cy="24" rx="3.5" ry="4.5"/>
+              <path d="M24 64L38 56M24 74L38 66" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+              <path class="logo-dark-elem" d="M29 46C23 46 17 40 14 43C12 45 16 48 21 51C26 53 28 51 29 46Z"/>
+              <path class="logo-dark-elem" d="M27 60C21 60 15 54 12 57C10 59 14 62 19 65C24 67 26 65 27 60Z"/>
+              <path class="logo-dark-elem" d="M47 48H59V40H67V48H79V56H67V64H59V56H47V48Z"/>
+              <path class="logo-accent-elem" d="M72 16L65 42C64 48 70 57 78 54C84 52 86 44 83 38L79 16H72Z"/>
+              <path class="logo-accent-elem" d="M78 61C70 63 67 69 67 76L65 90H78C82 86 85 76 83 68C82 64 80 62 78 61Z"/>
+              <path class="logo-dark-stroke" d="M75 22C92 27 103 42 103 58C103 76 90 90 77 94" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sidebar-title-group">
+            <h2>SIGOH</h2>
+            <p>Ortopedia Hospitalar</p>
+          </div>
         </div>
 
-    </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html" onclick="event.preventDefault(); irPara('dashboard.html');"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a>
+          </li>
+          <li>
+            <a href="#"><span class="menu-icon">👥</span><span class="menu-text">Pacientes</span></a>
+          </li>
+          <li>
+            <a href="#"><span class="menu-icon">🩺</span><span class="menu-text">Médicos</span></a>
+          </li>
+          <li>
+            <a href="consultas.html" onclick="event.preventDefault(); irPara('consultas.html');"><span class="menu-icon">📅</span><span class="menu-text">Consultas</span></a>
+          </li>
+          <li class="active">
+            <a href="exames.html"><span class="menu-icon">📋</span><span class="menu-text">Exames</span></a>
+          </li>
+        </ul>
+      </div>
 
+      <div class="sidebar-footer">
+        <button id="themeToggle" class="theme-toggle-btn" type="button" style="width: 100%; justify-content: center;">
+          <span class="theme-emoji">🌙</span>
+          <span class="theme-label">Modo Noturno</span>
+        </button>
+        <a href="../index.html" class="btn-sair" onclick="event.preventDefault(); irPara('../index.html');">
+          <span class="menu-icon">↩</span>
+          <span class="menu-text">Sair</span>
+        </a>
+      </div>
+    </aside>
 
-    <!-- JAVASCRIPT DA SIDEBAR -->
-    <script src="../js/sidebar.js" defer></script>
+    <main class="main-content">
+      <div class="top-bar">
+        <div>
+          <span class="breadcrumb">SIGOH / Gerenciamento</span>
+          <h1>Exames</h1>
+          <p>Gerencie os tipos de exames e acompanhe as solicitações médicas.</p>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar">A</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.9rem;">Administrador</div>
+            <div style="font-size: 0.76rem; color: var(--text-sub);">Área administrativa</div>
+          </div>
+        </div>
+      </div>
 
+      <div class="section-header-bar">
+        <div>
+          <h2>Gerenciamento de Exames</h2>
+          <p>Consulte os exames cadastrados e as solicitações realizadas.</p>
+        </div>
+        <button type="button" class="btn-primary-sigoh" onclick="alert('Módulo de cadastro de novo exame pronto para integração.')">
+          + Cadastrar Exame
+        </button>
+      </div>
+
+      <!-- CATÁLOGO DE EXAMES -->
+      <div class="table-panel">
+        <div class="table-top">
+          <div>
+            <h2>Catálogo de Exames</h2>
+            <p>Tipos de exames disponíveis para solicitação médica.</p>
+          </div>
+        </div>
+
+        <div class="search-box-group">
+          <label for="buscaCatalogo">Pesquisar exame</label>
+          <input type="text" id="buscaCatalogo" class="search-input-sigoh" placeholder="Digite o nome do exame">
+        </div>
+
+        <div class="table-wrapper">
+          <table id="tabelaCatalogo">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nome do exame</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>EX001</td>
+                <td>Raio-X</td>
+                <td>Exame de imagem radiográfica.</td>
+                <td><button type="button" class="btn-action-table" onclick="alert('Exame EX001: Raio-X Digital Ortopédico')">Visualizar</button></td>
+              </tr>
+              <tr>
+                <td>EX002</td>
+                <td>Ressonância Magnética</td>
+                <td>Exame de imagem por ressonância magnética.</td>
+                <td><button type="button" class="btn-action-table" onclick="alert('Exame EX002: Ressonância Magnética Articular')">Visualizar</button></td>
+              </tr>
+              <tr>
+                <td>EX003</td>
+                <td>Tomografia Computadorizada</td>
+                <td>Exame de imagem por tomografia.</td>
+                <td><button type="button" class="btn-action-table" onclick="alert('Exame EX003: Tomografia Computadorizada 3D')">Visualizar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SOLICITAÇÕES DE EXAMES -->
+      <div class="table-panel">
+        <div class="table-top">
+          <div>
+            <h2>Solicitações de Exames</h2>
+            <p>Acompanhe os exames solicitados durante as consultas médicas.</p>
+          </div>
+        </div>
+
+        <div class="search-box-group">
+          <label for="buscaSolicitacao">Pesquisar solicitação</label>
+          <input type="text" id="buscaSolicitacao" class="search-input-sigoh" placeholder="Digite o nome do paciente">
+        </div>
+
+        <div class="table-wrapper">
+          <table id="tabelaSolicitacoes">
+            <thead>
+              <tr>
+                <th>Solicitação</th>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Exames solicitados</th>
+                <th>Data</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SOL001</td>
+                <td>Paciente demonstrativo A</td>
+                <td>Dr. Carlos Menezes</td>
+                <td>Raio-X</td>
+                <td>10/11/2026</td>
+                <td><button type="button" class="btn-action-table" onclick="alert('Solicitação SOL001 - Paciente demonstrativo A (Raio-X)')">Detalhes</button></td>
+              </tr>
+              <tr>
+                <td>SOL002</td>
+                <td>Paciente demonstrativo B</td>
+                <td>Dra. Fernanda Lima</td>
+                <td>Raio-X, Ressonância Magnética</td>
+                <td>11/11/2026</td>
+                <td><button type="button" class="btn-action-table" onclick="alert('Solicitação SOL002 - Paciente demonstrativo B (Raio-X + Ressonância)')">Detalhes</button></td>
+              </tr>
+              <tr>
+                <td>SOL003</td>
+                <td>Paciente demonstrativo C</td>
+                <td>Dr. André Costa</td>
+                <td>Tomografia Computadorizada</td>
+                <td>12/11/2026</td>
+                <td><button type="button" class="btn-action-table" onclick="alert('Solicitação SOL003 - Paciente demonstrativo C (Tomografia)')">Detalhes</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/tema.js"></script>
+  <script>
+    function filtrarTabela(inputId, tabelaId) {
+      const input = document.getElementById(inputId);
+      const tabela = document.getElementById(tabelaId);
+      if (!input || !tabela) return;
+
+      input.addEventListener('keyup', () => {
+        const termo = input.value.toLowerCase();
+        tabela.querySelectorAll('tbody tr').forEach(linha => {
+          linha.style.display = linha.textContent.toLowerCase().includes(termo) ? '' : 'none';
+        });
+      });
+    }
+
+    filtrarTabela('buscaCatalogo', 'tabelaCatalogo');
+    filtrarTabela('buscaSolicitacao', 'tabelaSolicitacoes');
+  </script>
 </body>
-
 </html>

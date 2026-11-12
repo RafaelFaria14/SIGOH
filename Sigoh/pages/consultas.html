@@ -13,6 +13,7 @@
 </head>
 <body>
   <div class="page-wrapper">
+    <!-- BARRA LATERAL RETRÁTIL PADRONIZADA -->
     <aside class="sidebar">
       <div>
         <div class="sidebar-header">
@@ -51,7 +52,7 @@
             <a href="consultas.html"><span class="menu-icon">📅</span><span class="menu-text">Consultas</span></a>
           </li>
           <li>
-            <a href="#"><span class="menu-icon">📋</span><span class="menu-text">Exames</span></a>
+            <a href="exames.html" onclick="event.preventDefault(); irPara('exames.html');"><span class="menu-icon">📋</span><span class="menu-text">Exames</span></a>
           </li>
         </ul>
       </div>
@@ -68,18 +69,31 @@
       </div>
     </aside>
 
+    <!-- CONTEÚDO PRINCIPAL (COM MARGEM E LARGURA ALINHADAS À SIDEBAR) -->
     <main class="main-content">
+      <!-- CABEÇALHO -->
       <div class="top-bar">
         <div>
-          <span class="breadcrumb">SIGOH / Agenda Clínica</span>
-          <h1>Gestão de Consultas</h1>
-          <p>Listagem detalhada dos atendimentos e retornos ortopédicos.</p>
+          <span class="breadcrumb">SIGOH / Painel Ortopédico</span>
+          <h1>Consultas</h1>
+          <p>Acompanhe as principais informações e atendimentos da gestão hospitalar.</p>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar">A</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.9rem;">Administrador</div>
+            <div style="font-size: 0.76rem; color: var(--text-sub);">Área administrativa</div>
+          </div>
         </div>
       </div>
 
+      <!-- TABELA 1: GRADE DE ATENDIMENTO DO DIA -->
       <div class="table-panel">
         <div class="table-top">
-          <h2>Grade de Atendimento do Dia</h2>
+          <div>
+            <h2>Grade de Atendimento do Dia</h2>
+            <p>Consultas agendadas, em triagem e concluídas.</p>
+          </div>
           <a href="dashboard.html" onclick="event.preventDefault(); irPara('dashboard.html');" style="color: var(--accent); font-weight: 600; text-decoration: none;">← Voltar ao Dashboard</a>
         </div>
         <div class="table-wrapper">
@@ -126,6 +140,82 @@
                 <td>11:15</td>
                 <td>Infiltração Articular</td>
                 <td><span class="status-badge status-agendada">Agendada</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- OS 4 CARDS DE MÉTRICAS -->
+      <div class="cards-grid">
+        <div class="card">
+          <div>
+            <h3>Pacientes cadastrados</h3>
+            <div class="card-value">1.248</div>
+            <div class="card-legend">▲ +12% este mês</div>
+          </div>
+          <div class="card-icon">👥</div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Cirurgias agendadas</h3>
+            <div class="card-value">84</div>
+            <div class="card-legend">▲ 5 agendadas hoje</div>
+          </div>
+          <div class="card-icon">🩺</div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Consultas de hoje</h3>
+            <div class="card-value">37</div>
+            <div class="card-legend">● 3 em atendimento</div>
+          </div>
+          <div class="card-icon">📅</div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Recuperação Articular</h3>
+            <div class="card-value">96,2%</div>
+            <div class="card-legend">▲ Índice Excelente</div>
+          </div>
+          <div class="card-icon">📋</div>
+        </div>
+      </div>
+
+      <!-- TABELA 2: CONSULTAS RECENTES -->
+      <div class="table-panel">
+        <div class="table-top">
+          <h2>Consultas Recentes</h2>
+          <a href="dashboard.html" onclick="event.preventDefault(); irPara('dashboard.html');" style="color: var(--accent); font-weight: 600; text-decoration: none;">Ver todas</a>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Médico Ortopedista</th>
+                <th>Horário</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Paciente demonstrativo A</td>
+                <td>Dr. Carlos Menezes</td>
+                <td>08:00</td>
+                <td><span class="status-badge status-agendada">Agendada</span></td>
+              </tr>
+              <tr>
+                <td>Paciente demonstrativo B</td>
+                <td>Dra. Fernanda Lima</td>
+                <td>09:30</td>
+                <td><span class="status-badge status-andamento">Em andamento</span></td>
+              </tr>
+              <tr>
+                <td>Paciente demonstrativo C</td>
+                <td>Dr. André Costa</td>
+                <td>10:00</td>
+                <td><span class="status-badge status-finalizada">Finalizada</span></td>
               </tr>
             </tbody>
           </table>

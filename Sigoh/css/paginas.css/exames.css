@@ -1,0 +1,350 @@
+
+/* =========================================
+   SIGOH - PÁGINA DE EXAMES
+========================================= */
+
+.exames-page {
+    --exames-primary: #2563EB;
+    --exames-primary-hover: #1D4ED8;
+    --exames-border: var(--color-border, #E1E8F0);
+    --exames-surface: var(--color-surface, #FFFFFF);
+    --exames-muted: var(--color-text-muted, #63788B);
+
+    background-color: var(--color-background, #F3F6FA);
+    color: var(--color-text, #173B57);
+}
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+========================================= */
+
+.exames {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
+    margin: 0;
+    padding: 30px 36px;
+
+    box-sizing: border-box;
+}
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.exames__cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.exames__cabecalho h2 {
+    margin: 0 0 8px;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.exames__cabecalho p {
+    margin: 0;
+    color: var(--exames-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   BOTÃO CADASTRAR EXAME
+========================================= */
+
+.exames__botao-cadastrar {
+    padding: 11px 20px;
+
+    background-color: var(--exames-primary);
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.exames__botao-cadastrar:hover {
+    background-color: var(--exames-primary-hover);
+    transform: translateY(-1px);
+}
+
+.exames__botao-cadastrar:focus-visible {
+    outline: 3px solid #93C5FD;
+    outline-offset: 3px;
+}
+
+/* =========================================
+   SEÇÕES
+========================================= */
+
+.exames__secao {
+    width: 100%;
+    min-width: 0;
+
+    padding: 24px;
+    margin-bottom: 25px;
+
+    background-color: var(--exames-surface);
+    border: 1px solid var(--exames-border);
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+    box-sizing: border-box;
+}
+
+.exames__secao-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+.exames__secao-cabecalho h2 {
+    margin: 0 0 7px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.exames__secao-cabecalho p {
+    margin: 0;
+    color: var(--exames-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   FILTROS E PESQUISA
+========================================= */
+
+.exames__filtros {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.exames__campo-pesquisa {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    max-width: 400px;
+}
+
+.exames__campo-pesquisa label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.exames__campo-pesquisa input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 13px;
+    box-sizing: border-box;
+
+    background-color: var(--color-input, #F7F9FC);
+    color: var(--color-text, #173B57);
+
+    border: 1px solid var(--exames-border);
+    border-radius: 8px;
+
+    font-size: 14px;
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.exames__campo-pesquisa input::placeholder {
+    color: var(--exames-muted);
+}
+
+.exames__campo-pesquisa input:focus {
+    border-color: var(--exames-primary);
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 12%);
+}
+
+/* =========================================
+   CONTAINER DAS TABELAS
+========================================= */
+
+.exames__tabela-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid var(--exames-border);
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+
+/* =========================================
+   TABELAS
+========================================= */
+
+.exames__tabela {
+    width: 100%;
+    min-width: 650px;
+
+    border-collapse: collapse;
+    text-align: left;
+
+    font-size: 14px;
+}
+
+/* CABEÇALHO */
+
+.exames__tabela thead {
+    background-color: var(--color-input, #F1F5F9);
+}
+
+.exames__tabela th {
+    padding: 15px 16px;
+
+    color: var(--color-text, #173B57);
+    font-weight: 600;
+    font-size: 13px;
+
+    white-space: nowrap;
+    border-bottom: 1px solid var(--exames-border);
+}
+
+/* CÉLULAS */
+
+.exames__tabela td {
+    padding: 15px 16px;
+
+    color: inherit;
+    line-height: 1.5;
+    vertical-align: middle;
+
+    border-bottom: 1px solid var(--exames-border);
+}
+
+.exames__tabela tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* EFEITO HOVER */
+
+.exames__tabela tbody tr {
+    transition: background-color 0.2s;
+}
+
+.exames__tabela tbody tr:hover {
+    background-color: rgb(148 163 184 / 8%);
+}
+
+/* =========================================
+   BOTÕES DE VISUALIZAÇÃO
+========================================= */
+
+/* Funciona com <button> e <a> */
+
+.exames__tabela td button,
+.exames__tabela td a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 15px;
+
+    background-color: #EAF1FF;
+    color: #2563EB;
+
+    border: 1px solid #DBEAFE;
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+.exames__tabela td button:hover,
+.exames__tabela td a:hover {
+    background-color: #2563EB;
+    color: #FFFFFF;
+    border-color: #2563EB;
+}
+
+.exames__tabela td button:focus-visible,
+.exames__tabela td a:focus-visible {
+    outline: 3px solid #93C5FD;
+    outline-offset: 2px;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+    .exames {
+        padding: 22px;
+    }
+
+    .exames__secao {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .exames {
+        padding: 15px;
+    }
+
+    .exames__cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .exames__botao-cadastrar {
+        width: 100%;
+    }
+
+    .exames__secao {
+        padding: 15px;
+        margin-bottom: 18px;
+    }
+
+    .exames__secao-cabecalho h2 {
+        font-size: 16px;
+    }
+
+    .exames__campo-pesquisa {
+        max-width: 100%;
+    }
+
+    .exames__tabela {
+        min-width: 650px;
+    }
+}
