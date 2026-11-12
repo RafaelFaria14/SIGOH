@@ -1,0 +1,51 @@
+﻿:root {
+    /* Modo Claro */
+    --color-primary: #3893D5;
+    --color-primary-dark: #267BB8;
+    --color-primary-light: #E2F4FA;
+
+    --color-background: #EAF4FA;
+    --color-surface: #FFFFFF;
+    --color-surface-translucent: rgba(255, 255, 255, 0.88);
+    --color-input: #F2F8FC;
+    --color-border: #DCEAF0;
+
+    --color-text: #243F56;
+    --color-text-muted: #6F8FA6;
+
+    --logo-tree: #243F56;
+    --logo-leaf: #3893D5;
+    --logo-cross: #243F56;
+    --logo-joint: #3893D5;
+    --logo-arc: #243F56;
+    --logo-text: #243F56;
+    --watermark-opacity: 0.08;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+}
+
+body.dark-mode {
+    /* Modo Noturno - Deep Blue */
+    --color-primary: #4FA8E8;
+    --color-primary-dark: #2A82BE;
+    --color-primary-light: #162C3F;
+
+    --color-background: #0B1724;
+    --color-surface: #102131;
+    --color-surface-translucent: rgba(16, 33, 49, 0.82);
+    --color-input: #0D1C2A;
+    --color-border: #1E3852;
+
+    --color-text: #E5F0FA;
+    --color-text-muted: #8AA4B8;
+
+    --logo-tree: #91C9F2;
+    --logo-leaf: #4FA8E8;
+    --logo-cross: #E5F0FA;
+    --logo-joint: #4FA8E8;
+    --logo-arc: #91C9F2;
+    --logo-text: #E5F0FA;
+    --watermark-opacity: 0.06;
+}
