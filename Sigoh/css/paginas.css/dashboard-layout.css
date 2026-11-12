@@ -1,27 +1,29 @@
 
-/* ========================================
-   LAYOUT PRINCIPAL
-======================================== */
+/* =========================================
+   SIGOH - LAYOUT COMPARTILHADO
+========================================= */
+
+/* ESTRUTURA PRINCIPAL */
 
 .app-layout {
+    width: 100%;
     min-height: 100vh;
 }
 
 .app-layout__content {
-    min-height: 100vh;
-    margin-left: 70px;
     width: calc(100% - 70px);
+    min-height: 100vh;
     min-width: 0;
-    box-sizing: border-box;
+    margin-left: 70px;
 
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
-
-/* ========================================
-   BARRA LATERAL RETRÁTIL
-======================================== */
+/* =========================================
+   SIDEBAR RETRÁTIL
+========================================= */
 
 .sidebar {
     position: fixed;
@@ -39,8 +41,9 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    background: #287FB5;
+    background-color: #287FB5;
     color: #FFFFFF;
+
     border-radius: 0 24px 24px 0;
     box-shadow: 8px 0 30px rgb(23 59 87 / 8%);
 
@@ -51,144 +54,220 @@
 
 .sidebar:hover,
 .sidebar:focus-within {
-    width: var(--sidebar-width);
-    padding-right: 16px;
+    width: 250px;
     padding-left: 16px;
+    padding-right: 16px;
 }
 
-/* Marca SIGOH */
+/* =========================================
+   CABEÇALHO DA SIDEBAR
+========================================= */
 
-.sidebar__brand {
-    min-height: 48px;
+.sidebar-header {
+    min-height: 65px;
+    margin-bottom: 28px;
+
     display: flex;
     align-items: center;
-    gap: 12px;
+    overflow: hidden;
+}
 
-    margin-bottom: 36px;
-    padding: 4px 5px;
-
-    color: #FFFFFF;
-    text-decoration: none;
+.sidebar-title-group {
     white-space: nowrap;
-}
-
-.sidebar__brand-icon {
-    flex: 0 0 44px;
-    width: 44px;
-    height: 44px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 15px;
-    background: #3E7DA2;
-    color: #FFFFFF;
-
-    font-size: 28px;
-    font-weight: 600;
-}
-
-.sidebar__brand-text {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    min-width: 0;
     opacity: 0;
-
     transition: opacity 0.18s ease;
 }
 
-.sidebar:hover .sidebar__brand-text,
-.sidebar:focus-within .sidebar__brand-text {
+.sidebar:hover .sidebar-title-group,
+.sidebar:focus-within .sidebar-title-group {
     opacity: 1;
 }
 
-.sidebar__brand-text strong {
-    font-size: 17px;
-    letter-spacing: 0.4px;
+.sidebar-title-group h2 {
+    margin: 0 0 5px;
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 700;
 }
 
-.sidebar__brand-text small {
-    color: #C4D5E2;
-    font-size: 11px;
+.sidebar-title-group p {
+    margin: 0;
+    color: #D5E8F5;
+    font-size: 12px;
 }
 
-/* Links */
+/* =========================================
+   MENU DE NAVEGAÇÃO
+========================================= */
 
-.sidebar__nav {
+.sidebar-menu {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.sidebar__link {
+.sidebar-menu li {
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar-menu li a {
     min-height: 48px;
+    width: 100%;
 
     display: flex;
     align-items: center;
     gap: 14px;
 
-    padding: 0 12px;
-    border-radius: 15px;
+    padding: 0 10px;
+    border-radius: 12px;
 
-    color: #C4D5E2;
+    color: #D5E8F5;
     text-decoration: none;
     white-space: nowrap;
 
     transition:
-        color 0.2s ease,
-        background-color 0.2s ease;
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
-.sidebar__link:hover {
-    background: rgb(255 255 255 / 9%);
+.sidebar-menu li a:hover {
+    background-color: rgb(255 255 255 / 12%);
     color: #FFFFFF;
 }
 
-.sidebar__link--active {
-    background: #3E7DA2;
+/* ITEM ATIVO */
+
+.sidebar-menu li.active a {
+    background-color: #3E7DA2;
     color: #FFFFFF;
 }
 
-.sidebar__link--active:hover {
-    background: #4B8CB2;
+.sidebar-menu li.active a:hover {
+    background-color: #4B8CB2;
 }
 
-.sidebar__icon {
+/* =========================================
+   ÍCONES E TEXTOS
+========================================= */
+
+.menu-icon {
     flex: 0 0 26px;
     width: 26px;
 
-    text-align: center;
-    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
 }
 
-/* Nomes aparecem ao expandir */
-
-.sidebar__link span:not(.sidebar__icon) {
+.menu-text {
     opacity: 0;
+    white-space: nowrap;
     transition: opacity 0.18s ease;
 }
 
-.sidebar:hover .sidebar__link span:not(.sidebar__icon),
-.sidebar:focus-within .sidebar__link span:not(.sidebar__icon) {
+.sidebar:hover .menu-text,
+.sidebar:focus-within .menu-text {
     opacity: 1;
 }
 
-/* Rodapé da barra */
+/* =========================================
+   RODAPÉ DA SIDEBAR
+========================================= */
 
-.sidebar__footer {
+.sidebar-footer {
     margin-top: auto;
     padding-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* ========================================
-   CABEÇALHO
-======================================== */
+/* BOTÃO DE TEMA */
+
+.theme-toggle-btn {
+    width: 100%;
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    padding: 0 10px;
+
+    background: transparent;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgb(255 255 255 / 12%);
+}
+
+.theme-emoji {
+    flex: 0 0 26px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.theme-label {
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.18s ease;
+}
+
+.sidebar:hover .theme-label,
+.sidebar:focus-within .theme-label {
+    opacity: 1;
+}
+
+/* BOTÃO SAIR */
+
+.btn-sair {
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 0 10px;
+    border-radius: 12px;
+
+    color: #D5E8F5;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.btn-sair:hover {
+    background-color: rgb(255 255 255 / 12%);
+    color: #FFFFFF;
+}
+
+/* =========================================
+   TOPBAR - CABEÇALHO SUPERIOR
+========================================= */
 
 .topbar {
-    min-height: var(--header-height);
+    width: 100%;
+    min-height: var(--header-height, 76px);
 
     display: flex;
     align-items: center;
@@ -196,36 +275,48 @@
     gap: 20px;
 
     padding: 20px 36px;
+    box-sizing: border-box;
 
-    background: rgb(255 255 255 / 85%);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface, #FFFFFF);
+    border-bottom: 1px solid var(--color-border, #E1E8F0);
 }
 
 .topbar__heading {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    min-width: 0;
 }
 
 .topbar__eyebrow {
     margin: 0;
-    color: var(--color-text-muted);
+    color: var(--color-text-muted, #63788B);
     font-size: 12px;
 }
 
 .topbar__heading h1 {
     margin: 0;
-    color: var(--color-text);
 
+    color: var(--color-text, #173B57);
     font-size: 23px;
     font-weight: 600;
     letter-spacing: -0.7px;
 }
 
+.topbar__heading > p:last-child {
+    margin: 0;
+    color: var(--color-text-muted, #63788B);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* PERFIL */
+
 .topbar__profile {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 .topbar__avatar {
@@ -238,8 +329,9 @@
     justify-content: center;
 
     border-radius: 50%;
-    background: var(--color-primary-light);
-    color: var(--color-primary-dark);
+
+    background-color: var(--color-primary-light, #D5E3EF);
+    color: var(--color-primary-dark, #173B57);
 
     font-weight: 700;
 }
@@ -256,13 +348,19 @@
 }
 
 .topbar__profile-info span {
-    color: var(--color-text-muted);
+    color: var(--color-text-muted, #63788B);
     font-size: 11px;
 }
 
-/* ========================================
+/* =========================================
    RESPONSIVIDADE
-======================================== */
+========================================= */
+
+@media (max-width: 900px) {
+    .topbar {
+        padding: 20px 24px;
+    }
+}
 
 @media (max-width: 600px) {
     .sidebar {
@@ -273,16 +371,21 @@
     .sidebar:hover,
     .sidebar:focus-within {
         width: 235px;
-        padding-right: 14px;
         padding-left: 14px;
+        padding-right: 14px;
     }
 
     .app-layout__content {
+        width: calc(100% - 64px);
         margin-left: 64px;
     }
 
     .topbar {
         padding: 18px 16px;
+    }
+
+    .topbar__heading h1 {
+        font-size: 20px;
     }
 
     .topbar__profile-info {
@@ -292,9 +395,10 @@
 
 @media (prefers-reduced-motion: reduce) {
     .sidebar,
-    .sidebar__link,
-    .sidebar__brand-text,
-    .sidebar__link span:not(.sidebar__icon) {
+    .sidebar-title-group,
+    .sidebar-menu li a,
+    .menu-text,
+    .theme-label {
         transition: none;
     }
 }

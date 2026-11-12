@@ -1,32 +1,53 @@
-<!DOCTYPE html>
-<html lang="br">
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
 
-    <!-- Configuração de caracteres -->
+    <!-- Configurações básicas do documento -->
     <meta charset="UTF-8">
 
-    <!-- Adaptação para diferentes tamanhos de tela -->
+    <!-- Permite a adaptação da página a diferentes telas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Descrição da página -->
-    <meta name="description" content="Gerenciamento de exames médicos SIGOH">
+    <meta name="description" content="Gerenciamento de exames do SIGOH">
 
-    <!-- Título da aba do navegador -->
+    <!-- Título exibido na aba do navegador -->
     <title>Exames | SIGOH</title>
 
 
-    <!-- CSS PRINCIPAL -->
+    <!-- ================================================
+         ARQUIVOS CSS
+    ================================================= -->
+
+    <!-- Estilos gerais do sistema -->
     <link rel="stylesheet" href="../css/main.css">
 
-    <!-- CSS COMPARTILHADO: SIDEBAR E CABEÇALHO -->
+    <!-- Estilos compartilhados com o Dashboard -->
     <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
 
-    <!-- CSS ESPECÍFICO DA PÁGINA -->
+    <!-- Estilos específicos da página Exames -->
     <link rel="stylesheet" href="../css/paginas.css/exames.css">
+
+
+    <!-- ================================================
+         CONFIGURAÇÃO INICIAL DO TEMA
+    ================================================= -->
+
+    <script>
+
+        // Recupera a preferência de tema salva no navegador.
+        const temaSalvo = localStorage.getItem("sigo_theme");
+
+        // Se o tema salvo for claro, aplica a classe light-mode.
+        if (temaSalvo === "light") {
+
+            document.documentElement.classList.add("light-mode");
+
+        }
+
+    </script>
 
 </head>
 
@@ -34,19 +55,36 @@
 <body class="exames-page">
 
 
-    <!-- ESTRUTURA PRINCIPAL -->
+    <!-- ================================================
+         ESTRUTURA PRINCIPAL
+    ================================================= -->
+
     <div class="app-layout">
 
 
-        <!-- SIDEBAR GERADA PELO JAVASCRIPT -->
+        <!-- ============================================
+             SIDEBAR DINÂMICA
+        ============================================= -->
+
+        <!--
+            O JavaScript sidebar.js vai inserir a sidebar
+            automaticamente dentro deste elemento.
+        -->
+
         <div id="sidebar-container"></div>
 
 
-        <!-- CONTEÚDO DA PÁGINA -->
+        <!-- ============================================
+             ÁREA PRINCIPAL
+        ============================================= -->
+
         <div class="app-layout__content">
 
 
-            <!-- CABEÇALHO SUPERIOR -->
+            <!-- ========================================
+                 CABEÇALHO DA PÁGINA
+            ========================================= -->
+
             <header class="topbar">
 
                 <div class="topbar__heading">
@@ -57,10 +95,15 @@
 
                     <h1>Exames</h1>
 
+                    <p>
+                        Gerencie os tipos de exames e acompanhe
+                        as solicitações médicas.
+                    </p>
+
                 </div>
 
 
-                <!-- PERFIL DO USUÁRIO -->
+                <!-- Informações do usuário -->
                 <div class="topbar__profile">
 
                     <div class="topbar__avatar">
@@ -80,20 +123,371 @@
             </header>
 
 
-            <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
+            <!-- ========================================
+                 CONTEÚDO DA PÁGINA EXAMES
+            ========================================= -->
+
             <main class="exames">
 
-               
-            </main>
 
+                <!-- ====================================
+                     TÍTULO E AÇÕES
+                ===================================== -->
+
+                <section class="exames__cabecalho">
+
+                    <div>
+
+                        <h2>Gerenciamento de Exames</h2>
+
+                        <p>
+                            Consulte os exames cadastrados e
+                            as solicitações realizadas.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Botão para cadastrar um tipo de exame -->
+                    <button
+                        type="button"
+                        class="exames__botao-cadastrar"
+                    >
+                         Cadastrar Exame
+                    </button>
+
+                </section>
+
+
+                <!-- ====================================
+                     SEÇÃO 1 - CATÁLOGO DE EXAMES
+                ===================================== -->
+
+                <section class="exames__secao">
+
+                    <div class="exames__secao-cabecalho">
+
+                        <div>
+
+                            <h2>Catálogo de Exames</h2>
+
+                            <p>
+                                Tipos de exames disponíveis
+                                para solicitação médica.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Área de pesquisa -->
+                    <div class="exames__filtros">
+
+                        <div class="exames__campo-pesquisa">
+
+                            <label for="pesquisa-exames">
+                                Pesquisar exame
+                            </label>
+
+                            <input
+                                type="search"
+                                id="pesquisa-exames"
+                                name="pesquisa-exames"
+                                placeholder="Digite o nome do exame"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Tabela do catálogo -->
+                    <div class="exames__tabela-container">
+
+                        <table class="exames__tabela">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th scope="col">Código</th>
+
+                                    <th scope="col">Nome do exame</th>
+
+                                    <th scope="col">Descrição</th>
+
+                                    <th scope="col">Ações</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <!-- Exame 1 -->
+                                <tr>
+
+                                    <td>EX001</td>
+
+                                    <td>Raio-X</td>
+
+                                    <td>
+                                        Exame de imagem radiográfica.
+                                    </td>
+
+                                    <td>
+
+                                        <button type="button"
+                                             
+                                                onclick="window.open('../Assets/imagemexame.webp', '_blank');">
+                                               
+                                            Visualizar
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- Exame 2 -->
+                                <tr>
+
+                                    <td>EX002</td>
+
+                                    <td>Ressonância Magnética</td>
+
+                                    <td>
+                                        Exame de imagem por ressonância magnética.
+                                    </td>
+
+                                    <td>
+
+                                        <button type="button"
+                                                onclick="window.open('../Assets/imagemressonancia.jpg', '_blank');">
+                                            Visualizar
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- Exame 3 -->
+                                <tr>
+
+                                    <td>EX003</td>
+
+                                    <td>Tomografia Computadorizada</td>
+
+                                    <td>
+                                        Exame de imagem por tomografia.
+                                    </td>
+
+                                    <td>
+                                        <button 
+                                                 type="button"
+                                                 onclick="window.open('../Assets/imagem_tomografia.jpg', '_blank');">
+                                                 Visualizar
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ====================================
+                     SEÇÃO 2 - SOLICITAÇÕES DE EXAMES
+                ===================================== -->
+
+                <section class="exames__secao">
+
+                    <div class="exames__secao-cabecalho">
+
+                        <div>
+
+                            <h2>Solicitações de Exames</h2>
+
+                            <p>
+                                Acompanhe os exames solicitados
+                                durante as consultas médicas.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Área de pesquisa -->
+                    <div class="exames__filtros">
+
+                        <div class="exames__campo-pesquisa">
+
+                            <label for="pesquisa-solicitacoes">
+                                Pesquisar solicitação
+                            </label>
+
+                            <input
+                                type="search"
+                                id="pesquisa-solicitacoes"
+                                name="pesquisa-solicitacoes"
+                                placeholder="Digite o nome do paciente"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Tabela de solicitações -->
+                    <div class="exames__tabela-container">
+
+                        <table class="exames__tabela">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th scope="col">Solicitação</th>
+
+                                    <th scope="col">Paciente</th>
+
+                                    <th scope="col">Médico</th>
+
+                                    <th scope="col">Exames solicitados</th>
+
+                                    <th scope="col">Data</th>
+
+                                    <th scope="col">Ações</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <!-- Solicitação 1 -->
+                                <tr>
+
+                                    <td>SOL001</td>
+
+                                    <td>Paciente demonstrativo A</td>
+
+                                    <td>Dr. Carlos Menezes</td>
+
+                                    <td>Raio-X</td>
+
+                                    <td>10/11/2026</td>
+
+                                    <td>
+
+                                        <button type="button">
+                                            Detalhes
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- Solicitação 2 -->
+                                <tr>
+
+                                    <td>SOL002</td>
+
+                                    <td>Paciente demonstrativo B</td>
+
+                                    <td>Dra. Fernanda Lima</td>
+
+                                    <td>
+                                        Raio-X, Ressonância Magnética
+                                    </td>
+
+                                    <td>11/11/2026</td>
+
+                                    <td>
+
+                                        <button type="button">
+                                            Detalhes
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- Solicitação 3 -->
+                                <tr>
+
+                                    <td>SOL003</td>
+
+                                    <td>Paciente demonstrativo C</td>
+
+                                    <td>Dr. André Costa</td>
+
+                                    <td>Tomografia Computadorizada</td>
+
+                                    <td>12/11/2026</td>
+
+                                    <td>
+
+                                        <button type="button">
+                                            Detalhes
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+            </main>
 
         </div>
 
     </div>
 
 
-    <!-- JAVASCRIPT DA SIDEBAR -->
+    <!-- ================================================
+         ARQUIVOS JAVASCRIPT
+    ================================================= -->
+
+    <!--
+        Cria a sidebar automaticamente.
+
+        Também identifica a página atual e destaca
+        a opção Exames no menu.
+    -->
+
     <script src="../js/sidebar.js" defer></script>
+
+
+    <!--
+        Controla a alternância entre o tema claro e escuro.
+
+        Deve ser executado depois do sidebar.js,
+        porque o botão do tema é criado pela sidebar.
+    -->
+
+    <script src="../js/tema.js" defer></script>
+
 
 </body>
 
