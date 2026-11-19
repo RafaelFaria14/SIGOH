@@ -1,350 +1,528 @@
 
 /* =========================================
-   SIGOH - PÁGINA DE EXAMES
+   PÁGINA DE EXAMES - SIGOH
 ========================================= */
 
 .exames-page {
-    --exames-primary: #2563EB;
-    --exames-primary-hover: #1D4ED8;
-    --exames-border: var(--color-border, #E1E8F0);
-    --exames-surface: var(--color-surface, #FFFFFF);
-    --exames-muted: var(--color-text-muted, #63788B);
-
-    background-color: var(--color-background, #F3F6FA);
-    color: var(--color-text, #173B57);
+    min-height: 100vh;
 }
 
-/* =========================================
-   CONTEÚDO PRINCIPAL
-========================================= */
-
-.exames {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-
-    margin: 0;
-    padding: 30px 36px;
-
-    box-sizing: border-box;
+.pagina-exames {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
 }
 
 /* =========================================
    CABEÇALHO
 ========================================= */
 
-.exames__cabecalho {
+.exames-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
-
-    margin-bottom: 30px;
 }
 
-.exames__cabecalho h2 {
-    margin: 0 0 8px;
-    font-size: 23px;
+.exames-subtitulo {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--primary-accent, #0284c7);
+
+    font-size: 0.85rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.exames__cabecalho p {
+.exames-header h1 {
+    margin: 0 0 10px;
+
+    font-size: 2rem;
+    color: var(--text-main, #1e293b);
+}
+
+.exames-header p {
     margin: 0;
-    color: var(--exames-muted);
-    font-size: 14px;
-    line-height: 1.5;
+    color: var(--text-muted, #64748b);
+}
+
+/* Botão acesso médico */
+
+.exames-header__acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.exames__botao-medico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 13px 20px;
+
+    background: var(--sidebar-bg, #1e88e5);
+    color: #ffffff;
+
+    border-radius: 10px;
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+.exames__botao-medico:hover {
+    background: var(--sidebar-active, #1565c0);
+    transform: translateY(-2px);
 }
 
 /* =========================================
-   BOTÃO CADASTRAR EXAME
+   INDICADORES
 ========================================= */
 
-.exames__botao-cadastrar {
-    padding: 11px 20px;
-
-    background-color: var(--exames-primary);
-    color: #FFFFFF;
-
-    border: none;
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
-    white-space: nowrap;
-
-    transition:
-        background-color 0.2s,
-        transform 0.2s;
+.exames-indicadores {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
 }
 
-.exames__botao-cadastrar:hover {
-    background-color: var(--exames-primary-hover);
-    transform: translateY(-1px);
+.indicador-exame {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 24px;
+
+    background: var(--bg-card, #ffffff);
+    border: 1px solid var(--border-card, #e2e8f0);
+    border-radius: 16px;
+
+    box-shadow: var(--shadow-card, 0 5px 15px rgba(0,0,0,0.04));
+
+    transition: 0.25s;
 }
 
-.exames__botao-cadastrar:focus-visible {
-    outline: 3px solid #93C5FD;
-    outline-offset: 3px;
+.indicador-exame:hover {
+    transform: translateY(-3px);
+}
+
+.indicador-exame span {
+    color: var(--text-muted, #64748b);
+    font-size: 0.9rem;
+}
+
+.indicador-exame strong {
+    color: var(--text-main, #1e293b);
+    font-size: 1.8rem;
 }
 
 /* =========================================
    SEÇÕES
 ========================================= */
 
-.exames__secao {
-    width: 100%;
-    min-width: 0;
-
-    padding: 24px;
-    margin-bottom: 25px;
-
-    background-color: var(--exames-surface);
-    border: 1px solid var(--exames-border);
-    border-radius: 12px;
-
-    box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
-    box-sizing: border-box;
-}
-
-.exames__secao-cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-
-    margin-bottom: 22px;
-}
-
-.exames__secao-cabecalho h2 {
-    margin: 0 0 7px;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.exames__secao-cabecalho p {
-    margin: 0;
-    color: var(--exames-muted);
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-/* =========================================
-   FILTROS E PESQUISA
-========================================= */
-
-.exames__filtros {
-    display: flex;
-    align-items: flex-end;
-    gap: 15px;
-
-    margin-bottom: 22px;
-}
-
-.exames__campo-pesquisa {
+.exames-secao {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 20px;
 
-    width: 100%;
-    max-width: 400px;
+    padding: 25px;
+
+    background: var(--bg-card, #ffffff);
+    border: 1px solid var(--border-card, #e2e8f0);
+    border-radius: 16px;
+
+    box-shadow: var(--shadow-card, 0 5px 15px rgba(0,0,0,0.04));
 }
 
-.exames__campo-pesquisa label {
-    font-size: 13px;
-    font-weight: 600;
+.exames-secao__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.exames__campo-pesquisa input {
-    width: 100%;
-    height: 42px;
+.exames-secao__header h2 {
+    margin: 0 0 8px;
 
-    padding: 0 13px;
+    color: var(--text-main, #1e293b);
+    font-size: 1.25rem;
+}
+
+.exames-secao__header p {
+    margin: 0;
+
+    color: var(--text-muted, #64748b);
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   PESQUISA
+========================================= */
+
+.exames-pesquisa input {
+    width: 100%;
     box-sizing: border-box;
 
-    background-color: var(--color-input, #F7F9FC);
-    color: var(--color-text, #173B57);
+    padding: 13px 16px;
 
-    border: 1px solid var(--exames-border);
-    border-radius: 8px;
+    color: var(--text-main, #1e293b);
+    background: var(--bg-dashboard, #f0f4f8);
 
-    font-size: 14px;
+    border: 1px solid var(--border-card, #e2e8f0);
+    border-radius: 10px;
+
     outline: none;
-
-    transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
+    transition: 0.2s;
 }
 
-.exames__campo-pesquisa input::placeholder {
-    color: var(--exames-muted);
-}
-
-.exames__campo-pesquisa input:focus {
-    border-color: var(--exames-primary);
-    box-shadow: 0 0 0 3px rgb(37 99 235 / 12%);
+.exames-pesquisa input:focus {
+    border-color: var(--primary-accent, #0284c7);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
 }
 
 /* =========================================
-   CONTAINER DAS TABELAS
+   CATÁLOGO
 ========================================= */
 
-.exames__tabela-container {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-
-    border: 1px solid var(--exames-border);
-    border-radius: 8px;
-
-    box-sizing: border-box;
+.exames-catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
 }
 
-/* =========================================
-   TABELAS
-========================================= */
+.exame-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
-.exames__tabela {
-    width: 100%;
-    min-width: 650px;
+    padding: 20px;
 
-    border-collapse: collapse;
-    text-align: left;
+    background: var(--bg-dashboard, #f0f4f8);
+    border: 1px solid var(--border-card, #e2e8f0);
+    border-radius: 14px;
 
-    font-size: 14px;
+    transition: 0.25s;
 }
 
-/* CABEÇALHO */
-
-.exames__tabela thead {
-    background-color: var(--color-input, #F1F5F9);
+.exame-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-accent, #0284c7);
 }
 
-.exames__tabela th {
-    padding: 15px 16px;
-
-    color: var(--color-text, #173B57);
-    font-weight: 600;
-    font-size: 13px;
-
-    white-space: nowrap;
-    border-bottom: 1px solid var(--exames-border);
-}
-
-/* CÉLULAS */
-
-.exames__tabela td {
-    padding: 15px 16px;
-
-    color: inherit;
-    line-height: 1.5;
-    vertical-align: middle;
-
-    border-bottom: 1px solid var(--exames-border);
-}
-
-.exames__tabela tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* EFEITO HOVER */
-
-.exames__tabela tbody tr {
-    transition: background-color 0.2s;
-}
-
-.exames__tabela tbody tr:hover {
-    background-color: rgb(148 163 184 / 8%);
-}
-
-/* =========================================
-   BOTÕES DE VISUALIZAÇÃO
-========================================= */
-
-/* Funciona com <button> e <a> */
-
-.exames__tabela td button,
-.exames__tabela td a {
-    display: inline-flex;
+.exame-card__icone {
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 8px 15px;
+    width: 45px;
+    height: 45px;
 
-    background-color: #EAF1FF;
-    color: #2563EB;
+    background: rgba(2, 132, 199, 0.12);
+    border-radius: 12px;
 
-    border: 1px solid #DBEAFE;
-    border-radius: 6px;
+    font-size: 1.4rem;
+}
 
-    font-size: 13px;
+.exame-card h3 {
+    margin: 0;
+
+    color: var(--text-main, #1e293b);
+    font-size: 1rem;
+}
+
+.exame-card p {
+    margin: 0;
+
+    color: var(--text-muted, #64748b);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.exame-card__botao {
+    align-self: flex-start;
+
+    padding: 8px 13px;
+
+    color: var(--primary-accent, #0284c7);
+    background: transparent;
+
+    border: 1px solid var(--primary-accent, #0284c7);
+    border-radius: 8px;
+
+    cursor: pointer;
     font-weight: 600;
 
-    text-decoration: none;
+    transition: 0.2s;
+}
+
+.exame-card__botao:hover {
+    background: var(--primary-accent, #0284c7);
+    color: #ffffff;
+}
+
+/* =========================================
+   TABELA
+========================================= */
+
+.tabela-exames-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabela-exames {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.tabela-exames th,
+.tabela-exames td {
+    padding: 15px 12px;
+    text-align: left;
+
+    border-bottom: 1px solid var(--border-card, #e2e8f0);
+}
+
+.tabela-exames th {
+    color: var(--text-muted, #64748b);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.tabela-exames td {
+    color: var(--text-main, #1e293b);
+    font-size: 0.9rem;
+}
+
+.tabela-exames tbody tr:hover {
+    background: var(--bg-card-hover, #f8fafc);
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-exame {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.status-exame--pendente {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.status-exame--agendado {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.status-exame--realizado {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.status-exame--cancelado {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+/* =========================================
+   BOTÃO DETALHES
+========================================= */
+
+.btn-detalhes-exame {
+    padding: 7px 12px;
+
+    color: var(--primary-accent, #0284c7);
+    background: transparent;
+
+    border: 1px solid var(--primary-accent, #0284c7);
+    border-radius: 7px;
+
     cursor: pointer;
-    white-space: nowrap;
-
-    transition:
-        background-color 0.2s,
-        color 0.2s;
+    font-weight: 600;
 }
 
-.exames__tabela td button:hover,
-.exames__tabela td a:hover {
-    background-color: #2563EB;
-    color: #FFFFFF;
-    border-color: #2563EB;
+.btn-detalhes-exame:hover {
+    color: #ffffff;
+    background: var(--primary-accent, #0284c7);
 }
 
-.exames__tabela td button:focus-visible,
-.exames__tabela td a:focus-visible {
-    outline: 3px solid #93C5FD;
-    outline-offset: 2px;
+/* =========================================
+   MODAIS
+========================================= */
+
+.modal-exame[hidden] {
+    display: none !important;
+}
+
+.modal-exame {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+}
+
+.modal-exame__conteudo {
+    width: min(600px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+
+    padding: 25px;
+
+    color: var(--text-main, #1e293b);
+    background: var(--bg-card, #ffffff);
+
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal-exame__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--border-card, #e2e8f0);
+}
+
+.modal-exame__header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.modal-exame__header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    color: var(--text-main, #1e293b);
+    background: transparent;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-exame__header button:hover {
+    background: var(--bg-dashboard, #f0f4f8);
+}
+
+.modal-exame__conteudo p {
+    line-height: 1.7;
+    color: var(--text-muted, #64748b);
+}
+
+.modal-exame__conteudo strong {
+    color: var(--text-main, #1e293b);
+}
+
+/* =========================================
+   ESTADOS VAZIOS
+========================================= */
+
+#catalogoVazio,
+#solicitacoesVazias {
+    padding: 20px;
+
+    color: var(--text-muted, #64748b);
+    text-align: center;
+
+    background: var(--bg-dashboard, #f0f4f8);
+    border-radius: 10px;
+}
+
+#catalogoVazio[hidden],
+#solicitacoesVazias[hidden] {
+    display: none;
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode .exame-card {
+    background: var(--bg-card-hover, #1e293b);
+}
+
+body.dark-mode .status-exame--pendente {
+    background: rgba(194, 65, 12, 0.18);
+}
+
+body.dark-mode .status-exame--agendado {
+    background: rgba(29, 78, 216, 0.18);
+}
+
+body.dark-mode .status-exame--realizado {
+    background: rgba(4, 120, 87, 0.18);
+}
+
+body.dark-mode .status-exame--cancelado {
+    background: rgba(185, 28, 28, 0.18);
 }
 
 /* =========================================
    RESPONSIVIDADE
 ========================================= */
 
-@media (max-width: 900px) {
-    .exames {
-        padding: 22px;
-    }
-
-    .exames__secao {
-        padding: 20px;
+@media (max-width: 1100px) {
+    .exames-catalogo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 600px) {
-    .exames {
-        padding: 15px;
+@media (max-width: 750px) {
+    .exames-indicadores {
+        grid-template-columns: 1fr;
     }
 
-    .exames__cabecalho {
-        flex-direction: column;
+    .exames-header {
         align-items: flex-start;
     }
 
-    .exames__botao-cadastrar {
+    .exames-header__acoes {
         width: 100%;
     }
 
-    .exames__secao {
-        padding: 15px;
-        margin-bottom: 18px;
+    .exames__botao-medico {
+        width: 100%;
     }
 
-    .exames__secao-cabecalho h2 {
-        font-size: 16px;
+    .exames-catalogo {
+        grid-template-columns: 1fr;
     }
 
-    .exames__campo-pesquisa {
-        max-width: 100%;
-    }
-
-    .exames__tabela {
-        min-width: 650px;
+    .exames-secao {
+        padding: 18px;
     }
 }

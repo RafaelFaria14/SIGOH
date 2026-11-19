@@ -1,229 +1,303 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIGOH - Consultas Ortopédicas</title>
-  <link rel="stylesheet" href="../css/sigoh_layout.css">
-  <script>
-    if (localStorage.getItem('sigo_theme') === 'light') {
-      document.documentElement.classList.add('light-mode');
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consultas do paciente - SIGOH">
+
+    <title>Minhas Consultas | SIGOH</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
+    <link rel="stylesheet" href="../css/paginas.css/consultas.css">
+
+    <script>
+        const temaSalvo = localStorage.getItem("sigo_theme");
+
+        if (temaSalvo === "light") {
+            document.documentElement.classList.add("light-mode");
+        }
+    </script>
+
+    <script src="../js/sidebar.js" defer></script>
+    <script src="../js/tema.js" defer></script>
+ <script src="../js/consulta.js" defer></script>
 </head>
-<body>
-  <div class="page-wrapper">
-    <!-- BARRA LATERAL RETRÁTIL PADRONIZADA -->
-    <aside class="sidebar">
-      <div>
-        <div class="sidebar-header">
-          <div class="brand-logo">
-            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="25" y="16" width="5.5" height="74" rx="2.7" class="logo-accent-elem"/>
-              <path class="logo-dark-elem" d="M30 84C28 78 28 66 35 54C37 50 36 42 33 34C31 31 29 27 24 33C21 37 17 38 18 31C19 25 24 23 27 22C31 21 35 24 37 30C39 36 39 44 38 50C43 42 41 32 38 28C42 27 46 31 46 35C45 42 41 52 38 58C40 68 39 76 37 84H30Z"/>
-              <ellipse class="logo-accent-elem" cx="34" cy="20" rx="3.5" ry="5"/>
-              <ellipse class="logo-accent-elem" cx="42" cy="24" rx="3.5" ry="4.5"/>
-              <path d="M24 64L38 56M24 74L38 66" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <path class="logo-dark-elem" d="M29 46C23 46 17 40 14 43C12 45 16 48 21 51C26 53 28 51 29 46Z"/>
-              <path class="logo-dark-elem" d="M27 60C21 60 15 54 12 57C10 59 14 62 19 65C24 67 26 65 27 60Z"/>
-              <path class="logo-dark-elem" d="M47 48H59V40H67V48H79V56H67V64H59V56H47V48Z"/>
-              <path class="logo-accent-elem" d="M72 16L65 42C64 48 70 57 78 54C84 52 86 44 83 38L79 16H72Z"/>
-              <path class="logo-accent-elem" d="M78 61C70 63 67 69 67 76L65 90H78C82 86 85 76 83 68C82 64 80 62 78 61Z"/>
-              <path class="logo-dark-stroke" d="M75 22C92 27 103 42 103 58C103 76 90 90 77 94" stroke-width="7" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="sidebar-title-group">
-            <h2>SIGOH</h2>
-            <p>Ortopedia Hospitalar</p>
-          </div>
+
+<body class="consultas-page">
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR DINÂMICA -->
+        <div id="sidebar-container"></div>
+
+        <!-- CONTEÚDO -->
+        <div class="app-layout__content">
+
+            <!-- CABEÇALHO -->
+            <header class="topbar">
+
+                <div class="topbar__heading">
+                    <p class="topbar__eyebrow">SIGOH / Área do paciente</p>
+                    <h1>Minhas Consultas</h1>
+                    <p>Acompanhe seus agendamentos e histórico médico.</p>
+                </div>
+
+                <div class="topbar__profile">
+                    <div class="topbar__avatar">P</div>
+
+                    <div class="topbar__profile-info">
+                        <strong>Paciente demonstrativo</strong>
+                        <span>Área do paciente</span>
+                    </div>
+                </div>
+
+            </header>
+
+            <main class="consultas">
+
+                <!-- CABEÇALHO DA PÁGINA -->
+                <section class="consultas__cabecalho">
+
+                    <div>
+                        <h2>Olá, paciente!</h2>
+                        <p>Gerencie suas consultas e acompanhe seus atendimentos.</p>
+                    </div>
+
+                    <div class="consultas__acoes">
+                        <a href="consultas-medico.html"
+                           class="consultas__botao-medico">
+                            <span>🩺</span>
+                            Acesso médico
+                        </a>
+
+                        <button type="button"
+                                class="consultas__botao-principal"
+                                id="btnNovaConsulta">
+                            + Solicitar consulta
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <!-- INDICADORES -->
+                <section class="consultas__indicadores">
+
+                    <article class="consulta-indicador">
+                        <span class="consulta-indicador__icone">📅</span>
+                        <div>
+                            <p>Próximas consultas</p>
+                            <strong id="totalProximas">0</strong>
+                        </div>
+                    </article>
+
+                    <article class="consulta-indicador">
+                        <span class="consulta-indicador__icone">✅</span>
+                        <div>
+                            <p>Confirmadas</p>
+                            <strong id="totalConfirmadas">0</strong>
+                        </div>
+                    </article>
+
+                    <article class="consulta-indicador">
+                        <span class="consulta-indicador__icone">📋</span>
+                        <div>
+                            <p>Consultas realizadas</p>
+                            <strong id="totalRealizadas">0</strong>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- FORMULÁRIO DE NOVA CONSULTA -->
+                <section class="consulta-formulario" id="formularioConsulta" hidden>
+
+                    <div class="consulta-formulario__cabecalho">
+                        <div>
+                            <h2>Solicitar nova consulta</h2>
+                            <p>Escolha a especialidade, o médico e o horário desejado.</p>
+                        </div>
+
+                        <button type="button"
+                                class="consulta-formulario__fechar"
+                                id="btnFecharFormulario"
+                                aria-label="Fechar formulário">
+                            ✕
+                        </button>
+                    </div>
+
+                    <form id="formNovaConsulta">
+
+                        <div class="consulta-formulario__grid">
+
+                            <div class="consulta-campo">
+                                <label for="especialidade">Especialidade</label>
+
+                                <select id="especialidade" required>
+                                    <option value="">Selecione uma especialidade</option>
+                                    <option value="Ortopedia">Ortopedia</option>
+                                    <option value="Traumatologia">Traumatologia</option>
+                                    <option value="Fisiatria">Fisiatria</option>
+                                </select>
+                            </div>
+
+
+                            <div class="consulta-campo">
+                                <label for="medico">Médico</label>
+
+                                <select id="medico" required disabled>
+                                    <option value="">Selecione primeiro a especialidade</option>
+                                </select>
+                            </div>
+
+
+                            <div class="consulta-campo">
+                                <label for="dataConsulta">Data desejada</label>
+
+                                <input type="date"
+                                       id="dataConsulta"
+                                       required>
+                            </div>
+
+
+                            <div class="consulta-campo">
+                                <label for="horario">Horário disponível</label>
+
+                                <select id="horario" required disabled>
+                                    <option value="">Selecione médico e data</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="consulta-formulario__aviso">
+                            <span>ℹ️</span>
+                            Os horários apresentados são demonstrativos e dependem
+                            da disponibilidade cadastrada no sistema.
+                        </div>
+
+                        <div class="consulta-formulario__acoes">
+                            <button type="button"
+                                    class="consulta-botao-secundario"
+                                    id="btnCancelarFormulario">
+                                Voltar
+                            </button>
+
+                            <button type="submit"
+                                    class="consultas__botao-principal">
+                                Confirmar solicitação
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <!-- PRÓXIMAS CONSULTAS -->
+                <section class="consultas__secao">
+
+                    <div class="consultas__secao-cabecalho">
+                        <div>
+                            <h2>Próximas consultas</h2>
+                            <p>Acompanhe seus agendamentos futuros.</p>
+                        </div>
+                    </div>
+
+                    <div class="consultas__lista" id="listaProximas">
+
+                        <!-- Gerado pelo JavaScript -->
+
+                    </div>
+
+                    <p class="consultas__vazio" id="mensagemVazia" hidden>
+                        Você não possui consultas agendadas.
+                    </p>
+
+                </section>
+
+
+                <!-- HISTÓRICO -->
+                <section class="consultas__secao">
+
+                    <div class="consultas__secao-cabecalho">
+                        <div>
+                            <h2>Histórico de consultas</h2>
+                            <p>Consulte seus atendimentos anteriores.</p>
+                        </div>
+                    </div>
+
+                    <div class="consultas__tabela-container">
+
+                        <table class="consultas__tabela">
+
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Especialidade</th>
+                                    <th>Médico</th>
+                                    <th>Data</th>
+                                    <th>Horário</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="historicoConsultas">
+
+                                <!-- Gerado pelo JavaScript -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <p class="consultas__vazio" id="historicoVazio" hidden>
+                        Nenhuma consulta encontrada no histórico.
+                    </p>
+
+                </section>
+
+            </main>
+
         </div>
 
-        <ul class="sidebar-menu">
-          <li>
-            <a href="dashboard.html" onclick="event.preventDefault(); irPara('dashboard.html');"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a>
-          </li>
-          <li>
-            <a href="#"><span class="menu-icon">👥</span><span class="menu-text">Pacientes</span></a>
-          </li>
-          <li>
-            <a href="#"><span class="menu-icon">🩺</span><span class="menu-text">Médicos</span></a>
-          </li>
-          <li class="active">
-            <a href="consultas.html"><span class="menu-icon">📅</span><span class="menu-text">Consultas</span></a>
-          </li>
-          <li>
-            <a href="exames.html" onclick="event.preventDefault(); irPara('exames.html');"><span class="menu-icon">📋</span><span class="menu-text">Exames</span></a>
-          </li>
-        </ul>
-      </div>
+    </div>
 
-      <div class="sidebar-footer">
-        <button id="themeToggle" class="theme-toggle-btn" type="button" style="width: 100%; justify-content: center;">
-          <span class="theme-emoji">🌙</span>
-          <span class="theme-label">Modo Noturno</span>
-        </button>
-        <a href="../index.html" class="btn-sair" onclick="event.preventDefault(); irPara('../index.html');">
-          <span class="menu-icon">↩</span>
-          <span class="menu-text">Sair</span>
-        </a>
-      </div>
-    </aside>
 
-    <!-- CONTEÚDO PRINCIPAL (COM MARGEM E LARGURA ALINHADAS À SIDEBAR) -->
-    <main class="main-content">
-      <!-- CABEÇALHO -->
-      <div class="top-bar">
-        <div>
-          <span class="breadcrumb">SIGOH / Painel Ortopédico</span>
-          <h1>Consultas</h1>
-          <p>Acompanhe as principais informações e atendimentos da gestão hospitalar.</p>
-        </div>
-        <div class="user-profile">
-          <div class="user-avatar">A</div>
-          <div>
-            <div style="font-weight: 700; font-size: 0.9rem;">Administrador</div>
-            <div style="font-size: 0.76rem; color: var(--text-sub);">Área administrativa</div>
-          </div>
-        </div>
-      </div>
+    <!-- MODAL DE DETALHES -->
+    <div class="consulta-modal" id="modalDetalhes" hidden>
 
-      <!-- TABELA 1: GRADE DE ATENDIMENTO DO DIA -->
-      <div class="table-panel">
-        <div class="table-top">
-          <div>
-            <h2>Grade de Atendimento do Dia</h2>
-            <p>Consultas agendadas, em triagem e concluídas.</p>
-          </div>
-          <a href="dashboard.html" onclick="event.preventDefault(); irPara('dashboard.html');" style="color: var(--accent); font-weight: 600; text-decoration: none;">← Voltar ao Dashboard</a>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Paciente</th>
-                <th>Médico Especialista</th>
-                <th>Horário</th>
-                <th>Procedimento / Queixa</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#1081</td>
-                <td>Marcos Vinícius Ribeiro</td>
-                <td>Dr. Carlos Menezes</td>
-                <td>08:00</td>
-                <td>Pós-operatório Joelho</td>
-                <td><span class="status-badge status-agendada">Agendada</span></td>
-              </tr>
-              <tr>
-                <td>#1082</td>
-                <td>Beatriz Nogueira</td>
-                <td>Dra. Fernanda Lima</td>
-                <td>09:30</td>
-                <td>Trauma de Tornozelo</td>
-                <td><span class="status-badge status-andamento">Em andamento</span></td>
-              </tr>
-              <tr>
-                <td>#1083</td>
-                <td>Guilherme Soares</td>
-                <td>Dr. André Costa</td>
-                <td>10:00</td>
-                <td>Avaliação de Fratura</td>
-                <td><span class="status-badge status-finalizada">Finalizada</span></td>
-              </tr>
-              <tr>
-                <td>#1084</td>
-                <td>Camila Vasconcelos</td>
-                <td>Dr. Carlos Menezes</td>
-                <td>11:15</td>
-                <td>Infiltração Articular</td>
-                <td><span class="status-badge status-agendada">Agendada</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <div class="consulta-modal__conteudo">
 
-      <!-- OS 4 CARDS DE MÉTRICAS -->
-      <div class="cards-grid">
-        <div class="card">
-          <div>
-            <h3>Pacientes cadastrados</h3>
-            <div class="card-value">1.248</div>
-            <div class="card-legend">▲ +12% este mês</div>
-          </div>
-          <div class="card-icon">👥</div>
-        </div>
-        <div class="card">
-          <div>
-            <h3>Cirurgias agendadas</h3>
-            <div class="card-value">84</div>
-            <div class="card-legend">▲ 5 agendadas hoje</div>
-          </div>
-          <div class="card-icon">🩺</div>
-        </div>
-        <div class="card">
-          <div>
-            <h3>Consultas de hoje</h3>
-            <div class="card-value">37</div>
-            <div class="card-legend">● 3 em atendimento</div>
-          </div>
-          <div class="card-icon">📅</div>
-        </div>
-        <div class="card">
-          <div>
-            <h3>Recuperação Articular</h3>
-            <div class="card-value">96,2%</div>
-            <div class="card-legend">▲ Índice Excelente</div>
-          </div>
-          <div class="card-icon">📋</div>
-        </div>
-      </div>
+            <div class="consulta-modal__cabecalho">
+                <h2>Detalhes da consulta</h2>
 
-      <!-- TABELA 2: CONSULTAS RECENTES -->
-      <div class="table-panel">
-        <div class="table-top">
-          <h2>Consultas Recentes</h2>
-          <a href="dashboard.html" onclick="event.preventDefault(); irPara('dashboard.html');" style="color: var(--accent); font-weight: 600; text-decoration: none;">Ver todas</a>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Paciente</th>
-                <th>Médico Ortopedista</th>
-                <th>Horário</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Paciente demonstrativo A</td>
-                <td>Dr. Carlos Menezes</td>
-                <td>08:00</td>
-                <td><span class="status-badge status-agendada">Agendada</span></td>
-              </tr>
-              <tr>
-                <td>Paciente demonstrativo B</td>
-                <td>Dra. Fernanda Lima</td>
-                <td>09:30</td>
-                <td><span class="status-badge status-andamento">Em andamento</span></td>
-              </tr>
-              <tr>
-                <td>Paciente demonstrativo C</td>
-                <td>Dr. André Costa</td>
-                <td>10:00</td>
-                <td><span class="status-badge status-finalizada">Finalizada</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </main>
-  </div>
+                <button type="button"
+                        id="btnFecharDetalhes"
+                        aria-label="Fechar">
+                    ✕
+                </button>
+            </div>
 
-  <script src="../js/tema.js"></script>
+            <div id="conteudoDetalhes"></div>
+
+            <div class="consulta-modal__acoes">
+                <button type="button"
+                        class="consulta-botao-secundario"
+                        id="btnFecharDetalhesRodape">
+                    Fechar
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
