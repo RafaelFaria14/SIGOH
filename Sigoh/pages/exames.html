@@ -1,23 +1,16 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Exames | SIGOH</title>
+    <title>SIGOH | Exames</title>
 
-    <!-- CSS geral -->
     <link rel="stylesheet" href="../css/main.css">
-
-    <!-- Layout compartilhado -->
     <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
-
-    <!-- CSS específico -->
     <link rel="stylesheet" href="../css/paginas.css/exames.css">
 
-    <!-- Scripts -->
     <script src="../js/sidebar.js" defer></script>
     <script src="../js/tema.js" defer></script>
     <script src="../js/exames.js" defer></script>
@@ -30,12 +23,12 @@
         <!-- Sidebar -->
         <div id="sidebar-container"></div>
 
-        <!-- Conteúdo -->
+        <!-- Conteúdo principal -->
         <div class="app-layout__content">
 
             <main class="pagina-exames">
 
-                <!-- CABEÇALHO -->
+                <!-- Cabeçalho -->
                 <header class="exames-header">
 
                     <div>
@@ -51,7 +44,7 @@
 
                     <div class="exames-header__acoes">
 
-                        <a href="exames-medicos.html"
+                        <a href="examesMedico.html"
                            class="exames__botao-medico">
 
                             <span>🩺</span>
@@ -63,7 +56,7 @@
 
                 </header>
 
-                <!-- INDICADORES -->
+                <!-- Indicadores -->
                 <section class="exames-indicadores">
 
                     <article class="indicador-exame">
@@ -83,7 +76,7 @@
 
                 </section>
 
-                <!-- CATÁLOGO -->
+                <!-- Catálogo de exames -->
                 <section class="exames-secao">
 
                     <div class="exames-secao__header">
@@ -109,7 +102,7 @@
 
                     </div>
 
-                    <!-- Catálogo dinâmico -->
+                    <!-- Exames carregados pelo JavaScript -->
                     <div id="listaCatalogoExames"
                          class="exames-catalogo">
                     </div>
@@ -120,7 +113,7 @@
 
                 </section>
 
-                <!-- MINHAS SOLICITAÇÕES -->
+                <!-- Minhas solicitações -->
                 <section class="exames-secao">
 
                     <div class="exames-secao__header">
@@ -169,7 +162,7 @@
 
     </div>
 
-    <!-- MODAL DO EXAME -->
+    <!-- Modal do exame -->
     <div id="modalExame" class="modal-exame" hidden>
 
         <div class="modal-exame__conteudo">
@@ -182,7 +175,9 @@
                     type="button"
                     id="btnFecharModalExame"
                     aria-label="Fechar">
+
                     &times;
+
                 </button>
 
             </div>
@@ -193,7 +188,7 @@
 
     </div>
 
-    <!-- MODAL DA SOLICITAÇÃO -->
+    <!-- Modal da solicitação -->
     <div id="modalSolicitacao" class="modal-exame" hidden>
 
         <div class="modal-exame__conteudo">
@@ -206,7 +201,9 @@
                     type="button"
                     id="btnFecharSolicitacao"
                     aria-label="Fechar">
+
                     &times;
+
                 </button>
 
             </div>

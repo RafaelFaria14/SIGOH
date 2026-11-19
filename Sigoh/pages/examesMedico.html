@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIGOH | Atendimento Médico</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/paginas.css/dashboard-layout.css">
+    <link rel="stylesheet" href="../css/paginas.css/examesMedico.css">
+        
+
+    <script src="../js/sidebar.js" defer></script>
+    <script src="../js/tema.js" defer></script>
+    <script src="../js/exameMedico.js" defer></script>
+</head>
+
+<body class="exames-medicos-page">
+
+    <div class="app-layout">
+
+        <div id="sidebar-container"></div>
+
+        <div class="app-layout__content">
+
+            <!-- BARRA SUPERIOR -->
+            <header class="medico-topbar">
+
+                <div class="medico-busca">
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        id="buscaPaciente"
+                        placeholder="Buscar paciente ou consulta..."
+                    >
+                </div>
+
+                <div class="medico-perfil">
+
+                    <div class="medico-avatar">CR</div>
+
+                    <div>
+                        <strong>Dr. Carlos Ribeiro</strong>
+                        <small>Ortopedista • CRM 54321</small>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <main class="medico-main">
+
+                <header class="medico-header">
+
+                    <div>
+                        <h1>Atendimento Médico</h1>
+                        <p>Registro de exame físico e solicitação de exames</p>
+                    </div>
+
+                    <a href="exames.html" class="btn-voltar-paciente">
+                        Voltar à página de exames
+                    </a>
+
+                </header>
+
+                <!-- PACIENTE -->
+                <section class="medico-card paciente-resumo">
+
+                    <div class="paciente-avatar">👤</div>
+
+                    <div class="paciente-identificacao">
+                        <h2 id="nomePaciente">Ana Paula Mendonça</h2>
+                        <p id="dadosPaciente">42 anos • Feminino</p>
+                    </div>
+
+                    <div class="resumo-item">
+                        <span>Convênio</span>
+                        <strong id="convenioPaciente">Unimed Nacional</strong>
+                    </div>
+
+                    <div class="resumo-item">
+                        <span>Consulta</span>
+                        <strong id="codigoConsulta">#2024-08-0047</strong>
+                    </div>
+
+                    <span class="status-consulta">Em Atendimento</span>
+
+                </section>
+
+                <div class="medico-grid">
+
+                    <!-- COLUNA PRINCIPAL -->
+                    <div class="medico-coluna-principal">
+
+                        <!-- SINAIS VITAIS -->
+                        <section class="medico-card">
+
+                            <div class="medico-section-header">
+                                <span class="medico-section-icon">♡</span>
+                                <h2>Sinais Vitais e Antropometria</h2>
+                            </div>
+
+                            <div class="medico-vital-grid">
+
+                                <div class="medico-campo">
+                                    <label for="peso">PESO</label>
+
+                                    <div class="campo-unidade">
+                                        <input
+                                            type="number"
+                                            id="peso"
+                                            step="0.1"
+                                            placeholder="0.0"
+                                        >
+                                        <span>kg</span>
+                                    </div>
+                                </div>
+
+                                <div class="medico-campo">
+                                    <label for="altura">ALTURA</label>
+
+                                    <div class="campo-unidade">
+                                        <input
+                                            type="number"
+                                            id="altura"
+                                            step="0.01"
+                                            placeholder="0.00"
+                                        >
+                                        <span>m</span>
+                                    </div>
+                                </div>
+
+                                <div class="medico-campo">
+                                    <label>IMC</label>
+
+                                    <div class="campo-unidade campo-calculado">
+                                        <input id="imc" readonly placeholder="—">
+                                        <span>kg/m²</span>
+                                    </div>
+                                </div>
+
+                                <div class="medico-campo">
+                                    <label for="pressao">PRESSÃO ARTERIAL</label>
+                                    <input id="pressao" placeholder="120/80">
+                                </div>
+
+                                <div class="medico-campo">
+                                    <label for="frequencia">FREQ. CARDÍACA</label>
+                                    <input
+                                        id="frequencia"
+                                        type="number"
+                                        placeholder="70"
+                                    >
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- EXAME FÍSICO -->
+                        <section class="medico-card">
+
+                            <div class="medico-section-header">
+                                <span class="medico-section-icon">⚒</span>
+                                <h2>Avaliação Ortopédica Segmentar</h2>
+                            </div>
+
+                            <div class="medico-form-grid">
+
+                                <div class="medico-campo">
+                                    <label for="segmento">SEGMENTO AVALIADO</label>
+
+                                    <select id="segmento">
+                                        <option value="">Selecione o segmento...</option>
+                                        <option>Coluna cervical</option>
+                                        <option>Coluna torácica</option>
+                                        <option>Coluna lombar</option>
+                                        <option>Ombro direito</option>
+                                        <option>Ombro esquerdo</option>
+                                        <option>Cotovelo direito</option>
+                                        <option>Cotovelo esquerdo</option>
+                                        <option>Punho direito</option>
+                                        <option>Punho esquerdo</option>
+                                        <option>Mão direita</option>
+                                        <option>Mão esquerda</option>
+                                        <option>Quadril direito</option>
+                                        <option>Quadril esquerdo</option>
+                                        <option>Joelho direito</option>
+                                        <option>Joelho esquerdo</option>
+                                        <option>Tornozelo direito</option>
+                                        <option>Tornozelo esquerdo</option>
+                                        <option>Pé direito</option>
+                                        <option>Pé esquerdo</option>
+                                    </select>
+                                </div>
+
+                                <div class="medico-campo">
+                                    <label for="mobilidade">GRAU DE MOBILIDADE / ADM</label>
+
+                                    <input
+                                        id="mobilidade"
+                                        placeholder="Ex: Flexão 90°, extensão limitada a 30°..."
+                                    >
+                                </div>
+
+                                <div class="medico-campo campo-largo">
+                                    <label>INSPEÇÃO / PALPAÇÃO</label>
+
+                                    <textarea
+                                        id="inspecao"
+                                        placeholder="Descreva deformidades, edemas, pontos dolorosos à palpação, alinhamento articular..."
+                                    ></textarea>
+                                </div>
+
+                                <div class="medico-campo campo-largo">
+                                    <label>TESTES ORTOPÉDICOS ESPECÍFICOS</label>
+
+                                    <textarea
+                                        id="testes"
+                                        placeholder="Registre os testes realizados e resultados..."
+                                    ></textarea>
+                                </div>
+
+                                <div class="medico-campo campo-largo">
+                                    <label>FORÇA MUSCULAR E REFLEXOS</label>
+
+                                    <textarea
+                                        id="forca"
+                                        placeholder="Ex: Força grau 4/5 em extensão do joelho direito..."
+                                    ></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="medico-botoes">
+
+                                <button
+                                    type="button"
+                                    id="limparExameFisico"
+                                    class="btn-medico-secundario"
+                                >
+                                    Limpar Campos
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="salvarExameFisico"
+                                    class="btn-medico-principal"
+                                >
+                                    Salvar Exame Físico
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                        <!-- SOLICITAR EXAMES -->
+                        <section class="medico-card">
+
+                            <div class="medico-section-header">
+                                <span class="medico-section-icon">⚕</span>
+                                <h2>Solicitação de Exames</h2>
+                            </div>
+
+                            <p class="medico-descricao">
+                                Selecione os exames necessários para o paciente.
+                            </p>
+
+                            <div class="medico-campo">
+                                <label for="buscarExame">BUSCAR EXAME</label>
+
+                                <input
+                                    type="search"
+                                    id="buscarExame"
+                                    placeholder="Buscar exame..."
+                                >
+                            </div>
+
+                            <div id="catalogoExames" class="medico-catalogo"></div>
+
+                            <div class="medico-campo campo-largo">
+                                <label for="justificativa">JUSTIFICATIVA CLÍNICA</label>
+
+                                <textarea
+                                    id="justificativa"
+                                    placeholder="Informe a justificativa clínica..."
+                                ></textarea>
+                            </div>
+
+                            <div class="medico-campo campo-largo">
+                                <label for="observacoesExames">OBSERVAÇÕES</label>
+
+                                <textarea
+                                    id="observacoesExames"
+                                    placeholder="Orientações e informações adicionais..."
+                                ></textarea>
+                            </div>
+
+                            <div class="medico-contador">
+                                <strong>Exames selecionados</strong>
+                                <span id="contadorExames">0</span>
+                            </div>
+
+                            <div class="medico-botoes">
+
+                                <button
+                                    type="button"
+                                    id="limparSolicitacao"
+                                    class="btn-medico-secundario"
+                                >
+                                    Limpar Seleção
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="solicitarExames"
+                                    class="btn-medico-principal"
+                                >
+                                    Enviar Solicitação
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                        <!-- HISTÓRICO DE SOLICITAÇÕES -->
+                        <section class="medico-card">
+
+                            <div class="medico-section-header">
+                                <span class="medico-section-icon">📋</span>
+                                <h2>Solicitações Recentes</h2>
+                            </div>
+
+                            <div class="tabela-container">
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Paciente</th>
+                                            <th>Exames</th>
+                                            <th>Data</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="listaSolicitacoesMedico"></tbody>
+                                </table>
+
+                            </div>
+
+                            <div id="solicitacoesVazias" class="mensagem-vazia">
+                                Nenhuma solicitação registrada.
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                    <!-- LATERAL -->
+                    <aside class="medico-coluna-lateral">
+
+                        <section class="medico-card">
+
+                            <h2>Histórico do Paciente</h2>
+
+                            <div class="historico-item">
+                                <strong>1ª Consulta</strong>
+                                <small>05/09/2025</small>
+                                <p>Consulta ortopédica registrada.</p>
+                            </div>
+
+                        </section>
+
+                        <section class="medico-card">
+
+                            <h2>Diagnóstico Anterior</h2>
+
+                            <div class="diagnostico-item">
+                                <strong>Gonartrose Medial Bilateral</strong>
+                                <small>CID: M17.0 • 15/03/2026</small>
+                            </div>
+
+                            <div class="diagnostico-item">
+                                <strong>Síndrome Patelofemoral</strong>
+                                <small>CID: M22.2 • 10/12/2025</small>
+                            </div>
+
+                        </section>
+
+                        <section class="medico-card alerta-card">
+
+                            <h2>⚠ Alerta de Alergias</h2>
+
+                            <p>
+                                Anti-inflamatórios não esteroidais (AINEs)
+                                — reação leve registrada em 2024.
+                            </p>
+
+                        </section>
+
+                    </aside>
+
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+
+</body>
+</html>
